@@ -1,13 +1,13 @@
 <div class="chart-container-general-bi" [hidden]="isToExport">
   <ng-container *ngIf="this.componente; else Loader">
-    <kendo-chart class="chart-container-kendo-bi" #chartBarExport>
+    <kendo-chart class="chart-container-kendo-bi" #chartBarExport >
       <kendo-chart-title [text]="this.componente.label"></kendo-chart-title>
       <kendo-chart-category-axis>
-        <kendo-chart-category-axis-item [categories]="componente.values?.categories">
+        <kendo-chart-category-axis-item [categories]="componente.values?.categories" [labels]="{font:'14px Bebas Neue'}" >
         </kendo-chart-category-axis-item>
       </kendo-chart-category-axis>
       <kendo-chart-series>
-        <kendo-chart-series-item type="bar" [data]="componente.values?.data"></kendo-chart-series-item>
+        <kendo-chart-series-item type="bar" [labels]="{visible:true, font:'14px Bebas Neue'}"  [color]="'#dea600'" [data]="componente.values?.data" [visual]="radiusEnd"></kendo-chart-series-item>
       </kendo-chart-series>
     </kendo-chart>
   </ng-container>
