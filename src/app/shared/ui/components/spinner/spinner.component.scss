@@ -1,0 +1,14 @@
+
+:host{
+    display: flex;
+    margin: 0 auto;
+    ::ng-deep{
+        .bi-spinner{
+            width: 50px !important;
+        }
+        .mat-mdc-progress-spinner{
+            --mdc-circular-progress-active-indicator-color:var(--bi-secondary-color);
+        }
+    }
+
+}

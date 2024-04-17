@@ -1,0 +1,16 @@
+:host{
+    width: 100%;
+    display: flex;
+
+    ::ng-deep{
+        kendo-map{
+            width: 100%;
+            display: flex;
+            .k-map{
+                width: 100%;
+                display: flex;
+            }
+        }
+    }
+    
+}

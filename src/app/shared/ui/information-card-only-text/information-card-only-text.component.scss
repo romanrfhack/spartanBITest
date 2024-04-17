@@ -1,0 +1,46 @@
+.bi-information-card-component {
+    background-color: var(--bi-primary-color);
+    border-radius: 10px;
+    padding: 15px 15px;
+    display: flex;
+    width: 156px;
+    height: 215px;
+    max-width: 156px;
+    max-height: 220px;
+    height: 220px;
+    box-sizing: border-box;
+}
+.bi-container-information-card-component{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+}
+.bi-header-information-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bi-body-information-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.title{
+    font-size: 64px;
+}
+
+.subtitle{
+    font-size: 16px;
+    color: var(--bi-gray-ligth-color-3);
+    text-transform: uppercase;
+}
+
+mat-icon{
+    color: var(--bi-gray-ligth-color-2);
+    font-size: 20px !important;
+}

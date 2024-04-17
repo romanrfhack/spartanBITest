@@ -1,0 +1,260 @@
+{
+    "secciones": [
+        {
+            "seccion": {
+                "tipo": "view",
+                "label": "Vista",
+                "id": 1,
+                "items": [
+                    {
+                        "componente": "button-spartan",
+                        "values": [
+                            {
+                                "id": "1",
+                                "label": "Vista general"
+                            },
+                            {
+                                "id": "2",
+                                "label": "Por Municipio o region",
+                                "selected": true
+                               
+                            },
+                            {
+                                "id": "3",
+                                "label": "Por unidad"
+                               
+                            }
+                        ],
+                        "valor de prueba": "1"
+                    }
+                ]
+            }
+        },
+        {
+            "seccion": {
+                "tipo": "filters",
+                "label": "Filtros",
+                "id": 2,
+                "items": [
+                    {
+                        "id": "1",
+                        "label": "Tipo de victima",
+                        "componente": "buttonGroup",
+                        "values": [
+                            {
+                                "id": "1",
+                                "value": "1",
+                                "label": "Ambos",
+                                "icon": "wc"
+                            },
+                            {
+                                "id": "2",
+                                "value": "2",
+                                "label": "Femenino",
+                                "icon": "woman"
+                            },
+                            {
+                                "id": "3",
+                                "value": "3",
+                                "label": "Masculino",
+                                "icon": "man"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2",
+                        "label": "Periodo",
+                        "componente": "select",
+                        "values": [
+                            {
+                                "id": "",
+                                "value": "",
+                                "label": "Selecciona",
+                                "selected": true,
+                                "disabled": true
+                            },
+                            {
+                                "id": "1",
+                                "value": "1",
+                                "label": "Mensual"
+                            },
+                            {
+                                "id": "2",
+                                "value": "2",
+                                "label": "Quincenal"
+                            },
+                            {
+                                "id": "3",
+                                "value": "3",
+                                "label": "Anual"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "3",
+                        "label": "Año",
+                        "componente": "select",
+                        "values": [
+                            {
+                                "id": "",
+                                "value": "",
+                                "label": "Selecciona",
+                                "selected": true,
+                                "disabled": true
+                            },
+                            {
+                                "id": "1",
+                                "value": "1",
+                                "label": "Marzo 2024"
+                            },
+                            {
+                                "id": "2",
+                                "value": "2",
+                                "label": "Febrero 2024"
+                            },
+                            {
+                                "id": "3",
+                                "value": "3",
+                                "label": "Enero 2024"
+                            },
+                            {
+                                "id": "4",
+                                "value": "4",
+                                "label": "Diciembre 2023"
+                            },
+                            {
+                                "id": "5",
+                                "value": "5",
+                                "label": "Noviembre 2023"
+                            },
+                            {
+                                "id": "6",
+                                "value": "6",
+                                "label": "Octubre 2023"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "4",
+                        "label": "Comparar periodos",
+                        "componente": "checkShadow",
+                        "values": {
+                            "id": 1,
+                            "value": "",
+                            "label": "Comparar periodos"
+                        }
+                    },
+                    {
+                        "id": "5",
+                        "label": "Buscar",
+                        "componente": "button-spartan",
+                        "icon": "search"
+                    }
+                ]
+            }
+        },
+        {
+            "seccion": {
+                "tipo": "body",
+                "id": 3,
+                "items": [
+                    {
+                        "id": "2",
+                        "label": "Grafica de lineas",
+                        "componente": "line-chart",
+                        "divWidth": 30,
+                        "div1Height": 100,
+                        "width": "600",
+                        "values": {
+                            "categories": [
+                                "Jan",
+                                "Feb",
+                                "Mar",
+                                "Apr",
+                                "May",
+                                "Jun",
+                                "Jul"
+                            ],
+                            "title": "Meses",
+                            "series": [
+                                {
+                                    "data": [
+                                        123,
+                                        276,
+                                        310,
+                                        212,
+                                        240,
+                                        156,
+                                        98
+                                    ]
+                                },
+                                {
+                                    "data": [
+                                        165, 210, 287, 144, 190, 167, 212
+                                    ]
+                                },
+                                {
+                                    "data": [
+                                        56, 140, 195, 46, 123, 78, 95
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "3",
+                        "label": "Grafica de pastel",
+                        "componente": "pie-chart",
+                        "divWidth": 30,
+                        "div1Height": 100,
+                        "width": "600",
+                        "values": [
+                            {
+                                "category": "0-14",
+                                "value": 0.2545
+                            },
+                            {
+                                "category": "15-24",
+                                "value": 0.1552
+                            },
+                            {
+                                "category": "25-54",
+                                "value": 0.4059
+                            },
+                            {
+                                "category": "55-64",
+                                "value": 0.0911
+                            },
+                            {
+                                "category": "65+",
+                                "value": 0.0933
+                            }
+                        ]
+                    },
+                    {
+                        "id": "4",
+                        "label": "Grafica de barras",
+                        "componente": "bar-chart",
+                        "divWidth": 50,
+                        "div1Height": 100,
+                        "width": "600",
+                        "values": {
+                            "categories": [
+                                "item 1",
+                                "Item 2",
+                                "Item 3",
+                                "Item 4"
+                            ],
+                            "data": [
+                                300,
+                                323,
+                                434,
+                                543
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

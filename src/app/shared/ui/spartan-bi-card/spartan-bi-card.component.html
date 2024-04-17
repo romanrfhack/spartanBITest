@@ -1,0 +1,14 @@
+<div class="spartan-bi-card main-container" [ngClass]="{'fullView':isFullView}">
+    <div class="w-100 flex justify-end mr-1 gap-1">
+        <button matTooltip="Exportar grafica" mat-icon-button color="accent" (click)="onExport()" >
+            <mat-icon>print</mat-icon>
+          </button>
+        <button mat-icon-button matTooltip="...">
+            <mat-icon>logout</mat-icon>
+          </button>
+        <button mat-icon-button  matTooltip="Vista completa" (click)="onFullView()">
+            <mat-icon>{{isFullView ? 'close_fullscreen' : 'open_in_full'}}</mat-icon>
+          </button>
+    </div>
+    <ng-content></ng-content>
+</div>

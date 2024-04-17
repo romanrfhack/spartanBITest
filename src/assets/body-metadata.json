@@ -1,0 +1,138 @@
+{
+    "secciones": [
+        {
+            "seccion": {
+                "tipo": "body",
+                "id": 3,
+                "items": [
+                    {
+                        "id": "1",
+                        "label": "Selecciona una o mas unidades",
+                        "componente": "filter-checks-with-search",
+                        "divWidth": 20,
+                        "divHeight": 100,
+                        "width": "500",
+                        "values": [
+                            {
+                                "id": "1",
+                                "value": "1",
+                                "label": "U. Atencion y Determinacion",
+                                "checked": false
+                            },
+                            {
+                                "id": "2",
+                                "value": "2",
+                                "label": "U.I.L Hechos de transito",
+                                "checked": true
+                            },
+                            {
+                                "id": "3",
+                                "value": "3",
+                                "label": "U.I.L En deltios comunes",
+                                "checked": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2",
+                        "label": "Grafica de lineas",
+                        "componente": "line-chart",
+                        "divWidth": 30,
+                        "div1Height": 100,
+                        "width": "500",
+                        "values": {
+                            "categories": [
+                                "Jan",
+                                "Feb",
+                                "Mar",
+                                "Apr",
+                                "May",
+                                "Jun",
+                                "Jul"
+                            ],
+                            "title": "Meses",
+                            "series": [
+                                {
+                                    "data": [123,276,310,212,240,156,98]
+                                },
+                                {
+                                    "data": [
+                                        165, 210, 287, 144, 190, 167, 212
+                                    ]
+                                },
+                                {
+                                    "data": [
+                                        56, 140, 195, 46, 123, 78, 95
+                                    ]
+                                },
+                                {
+                                    "data": [
+                                        56, 40, 95, 46, 90, 78, 95
+                                    ]
+                                },
+                                {
+                                    "data": [
+                                        56, 900, 195, 436, 123, 738, 235
+                                    ]
+                                }
+
+                            ]
+                        }
+                    },
+                    {
+                        "id": "3",
+                        "label": "Grafica de pastel",
+                        "componente": "pie-chart",
+                        "divWidth": 30,
+                        "div1Height": 100,
+                        "width": "500",
+                        "values": [
+                            {
+                                "category": "15-24",
+                                "value": 0.1552
+                            },
+                            {
+                                "category": "25-54",
+                                "value": 0.4059
+                            },
+                            {
+                                "category": "55-64",
+                                "value": 0.0911
+                            },
+                            {
+                                "category": "65+",
+                                "value": 0.0933
+                            }
+                        ]
+                    },
+                    {
+                        "id": "4",
+                        "label": "Grafica de barras",
+                        "componente": "bar-chart",
+                        "divWidth": 50,
+                        "div1Height": 100,
+                        "width": "1500",
+                        "values": {
+                            "categories": [
+                                "Item 1",
+                                "Item 2",
+                                "Item 3",
+                                "Item 4",
+                                "Item 5",
+                                "Item 6"
+                            ],
+                            "data": [
+                                100,
+                                123,
+                                234,
+                                343,
+                                500,
+                                600
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

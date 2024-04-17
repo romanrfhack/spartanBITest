@@ -1,0 +1,21 @@
+<kendo-map [center]="center" [zoom]="15">
+    <kendo-map-layers>
+      <kendo-map-tile-layer
+        [subdomains]="tileSubdomains"
+        [urlTemplate]="tileUrl"
+        attribution="&copy; <a href='https://osm.org/copyright'>OpenStreetMap contributors</a>"
+      >
+      </kendo-map-tile-layer>
+      <kendo-map-marker-layer [data]="markers" locationField="latlng">
+        <kendo-map-marker-layer-tooltip>
+          <ng-template
+            kendoMapMarkerTooltipTemplate
+            let-location="location"
+            let-dataItem="dataItem"
+          >
+            {{ dataItem.name }} ({{ location }})
+          </ng-template>
+        </kendo-map-marker-layer-tooltip>
+      </kendo-map-marker-layer>
+    </kendo-map-layers>
+  </kendo-map>

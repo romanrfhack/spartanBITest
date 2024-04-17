@@ -1,0 +1,28 @@
+<div class="chart-container-general-bi">
+    <ng-container *ngIf="this.dataComponete; else Loader">
+    <div class="bi-information-card-component">
+        <div class="bi-container-information-card-component">
+            <div class="bi-header-information-card">
+                <span class="title" [hidden]="true">{{this.dataComponete.label}}</span>
+                <mat-icon>{{this.dataComponete.icon}}</mat-icon>
+            </div>
+            <div class="bi-body-information-card">
+                <kendo-circulargauge  [transitions]="true" [color]="'#dea600'" [value]="this.dataComponete.values.percentageValue"
+                    class="bi-kendo-arcgauge">
+                    <ng-template kendoCircularGaugeCenterTemplate let-value="value" let-color="color"
+                        class="container-value-percentage">
+                        <span class="value-percentage">{{ value }}%</span>
+                    </ng-template>
+                </kendo-circulargauge>
+                <div class="container-values">
+                    <span class="value">{{this.dataComponete.values.value}}</span>
+                    <span class="value-subtitle">{{this.dataComponete.label}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </ng-container>
+</div>
+<ng-template #Loader>
+    <app-spinner></app-spinner>
+</ng-template>

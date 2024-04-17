@@ -1,0 +1,25 @@
+
+
+.container-bi-input-search{
+    height: 30px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bi-gray-ligth-color);
+    border-radius: 10px;
+    border: 1.5px solid  var(--bi-gray-color);
+    color: var(--bi-gray-color);
+    input{
+        all: unset;
+        width: 100%;
+        font-family: 'Bebas Neue';
+        text-transform: lowercase;
+    }
+    .color-icon{
+        color: var(--bi-gray-color);
+    }
+    &:active{
+        border: 1.5px solid  var(--bi-secondary-color);
+    }
+}

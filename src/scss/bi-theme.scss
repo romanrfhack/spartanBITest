@@ -1,0 +1,108 @@
+@import "@angular/material/theming";
+@include mat-core();
+
+$bi-color-primary: (
+    50 : #fbf4e0,
+    100 : #f5e4b3,
+    200 : #efd380,
+    300 : #e8c14d,
+    400 : #e3b326,
+    500 : #dea600,
+    600 : #da9e00,
+    700 : #d59500,
+    800 : #d18b00,
+    900 : #c87b00,
+    A100 : #fff9f1,
+    A200 : #ffe2be,
+    A400 : #ffcc8b,
+    A700 : #ffc071,
+    contrast: (50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+
+$bi-color-accent: (
+    50 : #fefefe,
+    100 : #fcfcfc,
+    200 : #fafafb,
+    300 : #f7f8f9,
+    400 : #f6f7f7,
+    500 : #f4f5f6,
+    600 : #f3f4f5,
+    700 : #f1f2f3,
+    800 : #eff0f2,
+    900 : #eceeef,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+    contrast: (50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$bi-color-warn: (
+    50 : #e5e5e5,
+    100 : #bebfbe,
+    200 : #939493,
+    300 : #686968,
+    400 : #474847,
+    500 : #272827,
+    600 : #232423,
+    700 : #1d1e1d,
+    800 : #171817,
+    900 : #0e0f0e,
+    A100 : #67ee67,
+    A200 : #3ae93a,
+    A400 : #00ef00,
+    A700 : #00d500,
+    contrast: (50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
+);
+
+$mat-theming-primary: mat-palette($bi-color-primary);
+$mat-theming-accent: mat-palette($bi-color-accent);
+$mat-theming-warn: mat-palette($bi-color-primary);
+
+$bi-theme: mat-light-theme($mat-theming-primary,$mat-theming-accent, $mat-theming-warn);
+
+@include angular-material-theme($bi-theme)

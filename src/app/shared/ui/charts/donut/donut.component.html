@@ -1,0 +1,22 @@
+<div class="chart-container-general-bi" [hidden]="isToExport">
+    <ng-container *ngIf="this.data; else Loader">
+        <kendo-chart [title]="this.data.label" class="chart-container-kendo-bi" #chartDonutExport>
+            <ng-template kendoChartDonutCenterTemplate>
+                <h3>22.5%</h3>
+                of which renewables
+            </ng-template>
+            <kendo-chart-legend position="bottom"></kendo-chart-legend>
+            <kendo-chart-series>
+                <kendo-chart-series-item type="donut" [data]="this.data.values" field="value"
+                    categoryField="category">
+                    <kendo-chart-series-item-labels [content]="labelContent" color="#fff" background="none">
+                    </kendo-chart-series-item-labels>
+                </kendo-chart-series-item>
+            </kendo-chart-series>
+            <kendo-chart-legend [visible]="false"></kendo-chart-legend>
+        </kendo-chart>
+    </ng-container>
+</div>
+<ng-template #Loader>
+    <app-spinner></app-spinner>
+</ng-template>

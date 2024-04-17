@@ -1,0 +1,19 @@
+<div class="container-main-filters-checks">
+    <div class="container-filters-cheks">
+        <span>{{this.controlMetadata?.label ?? ''}}</span>
+        <app-input-search (onSearch)="onChangeSearchInput($event)"></app-input-search>
+        <div class="container-cheks-spartan-bi">
+            <ng-container *ngIf="this.controlMetadata; else elseInstance">
+                <mat-checkbox class="spartan-bi-checkbox spartan-bi-checkbox-transparent" [checked]="selectedAll"
+                    (change)="setAll($event.checked)">Todos</mat-checkbox>
+                <div *ngFor="let item of this.controlsChecked.values">
+                    <mat-checkbox class="spartan-bi-checkbox spartan-bi-checkbox-transparent" [checked]="item.checked"
+                        (change)="onChecked($event.checked, item)">{{item.label | titlecase}}</mat-checkbox>
+                </div>
+            </ng-container>
+            <ng-template #elseInstance>
+                <app-spinner></app-spinner>
+            </ng-template>
+        </div>
+    </div>
+</div>

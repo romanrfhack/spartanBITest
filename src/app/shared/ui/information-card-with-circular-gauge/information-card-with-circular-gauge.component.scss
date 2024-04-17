@@ -1,0 +1,69 @@
+.bi-information-card-component {
+    background-color: var(--bi-primary-color);
+    border-radius: 10px;
+    padding: 15px 15px;
+    display: flex;
+    max-width: 356px;
+    width: 345px;
+    height: 220px;
+    box-sizing: border-box;
+}
+.bi-container-information-card-component{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+.bi-header-information-card{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.bi-body-information-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    flex-direction: row;
+    width: 90%;
+}
+.bi-kendo-arcgauge {
+    width: 150px;
+    height: 136px;
+}
+
+.value-percentage{
+    font-size: 40px;
+    color: var(--bi-secondary-color);
+}
+
+.value-subtitle{
+    font-size: 18px;
+    color: var(--bi-gray-ligth-color-2);
+    margin-top: -41px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+}
+:host{
+    ::ng-deep{
+        .k-arcgauge-label{
+        }
+    }
+}
+
+.container-values{
+    display: flex;
+    flex-direction: column;
+}
+
+.value{
+    font-size: 96px;
+    margin-top: -15px;
+}
+
+mat-icon{
+    color: var(--bi-gray-ligth-color-2);
+    font-size: 20px !important;
+}

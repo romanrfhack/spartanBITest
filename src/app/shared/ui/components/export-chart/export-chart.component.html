@@ -1,0 +1,11 @@
+<kendo-chart #chartExport class="chart-container-kendo-bi" [id]="this.componente.idHtml" [hidden]="true">
+    <kendo-chart-title></kendo-chart-title>
+    <kendo-chart-category-axis>
+      <kendo-chart-category-axis-item [categories]="componente.values?.categories">
+      </kendo-chart-category-axis-item>
+    </kendo-chart-category-axis>
+    <kendo-chart-series>
+      <kendo-chart-series-item type="bar" [data]="componente.values?.data"></kendo-chart-series-item>
+    </kendo-chart-series>
+  </kendo-chart>
+

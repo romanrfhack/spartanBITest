@@ -1,0 +1,78 @@
+<!-- <div *ngIf="this.componentsMetadata">
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-around stretch">
+    <ng-container *ngFor="let component of this.componentsMetadata.seccion.items">
+      <ng-container [ngSwitch]="component.componente">
+        <div [fxFlex]="component.divWidth" *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.BAR_CHART" class="spartan-bi-card">
+          <app-bar></app-bar>
+        </div>
+        <div [fxFlex]="component.divWidth" *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.LINE_CHART" class="spartan-bi-card">
+          <app-line></app-line>
+        </div>
+        <div [fxFlex]="component.divWidth" *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.PIE_CHART" class="spartan-bi-card">
+          <app-pie></app-pie>
+        </div>
+        <div [fxFlex]="component.divWidth" *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.FILTER_CHECK_WITH_SEARCH"
+          class="spartan-bi-card">
+          <app-filters-with-checks (checksEmit)="onFiltersWithChecks($event)"
+            (searchInputEmit)="onSearchFiltersWithChecks($event)" [metadataInput]="this.metada"
+            class="app-filters-with-checks"> </app-filters-with-checks>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div> -->
+
+<div *ngIf="this.componentsMetadata">
+  <div class="flex-container">
+    <div *ngFor="let component of this.componentsMetadata.items" class="flex-item-bi" [style.width.px]="component.width"
+      [style.height.px]="component.height">
+      
+      <ng-container [ngSwitch]="component.nombreComponente">
+        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.INFORMATION_CARD_SIMPLE">
+          <app-information-card-only-text [metadataComponente]="component"></app-information-card-only-text>
+        </div>
+        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.INFORMATION_CARD_WITH_CHART">
+          <app-information-card-with-chart [metadataComponente]="component"></app-information-card-with-chart>
+        </div>
+        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.INFORMATION_CARD_WITH_CHART_DONUT">
+          <app-information-card-with-donut-chart [metadataComponente]="component"></app-information-card-with-donut-chart>
+        </div>
+        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.BAR_CHART">
+          <app-spartan-bi-card [componente]="component">
+            <app-bar [metadataComponente]="component"></app-bar>
+          </app-spartan-bi-card>
+        </div>
+        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.LINE_CHART" class="spartan-bi-card">
+          <app-spartan-bi-card [componente]="component">
+            <app-line [metadataComponente]="component"></app-line>
+          </app-spartan-bi-card>
+        </div>
+        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.PIE_CHART" class="spartan-bi-card">
+          <app-spartan-bi-card [componente]="component">
+            <app-pie [metadataComponente]="component"></app-pie>
+          </app-spartan-bi-card>
+        </div>
+        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.DONUT_CHART" class="spartan-bi-card">
+          <app-spartan-bi-card [componente]="component">
+            <app-donut [metadataComponente]="component"></app-donut>
+          </app-spartan-bi-card>
+        </div>
+        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.MAP_WITH_BUBLES" class="spartan-bi-card">
+          <app-spartan-bi-card [componente]="component">
+            <app-map-with-bubbles></app-map-with-bubbles>
+          </app-spartan-bi-card>
+        </div>
+        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.MAP_WITH_MARKERS" class="spartan-bi-card">
+          <app-spartan-bi-card [componente]="component">
+            <app-map-with-markers></app-map-with-markers>
+          </app-spartan-bi-card>
+        </div>
+        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.FILTER_CHECK_WITH_SEARCH" class="spartan-bi-card">
+          <app-filters-with-checks (checksEmit)="onFiltersWithChecks($event)"
+            (searchInputEmit)="onSearchFiltersWithChecks($event)" [metadataComponente]="component"
+            class="app-filters-with-checks"> </app-filters-with-checks>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

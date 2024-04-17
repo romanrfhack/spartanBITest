@@ -1,0 +1,38 @@
+<div class="chart-container-general-bi">
+    <ng-container *ngIf="this.dataComponete && this.chartOptions; else Loader">
+        <div class="bi-information-card-component">
+            <div class="bi-container-information-card-component">
+                <div class="bi-header-information-card">
+                    <span class="title">{{this.dataComponete.label}}</span>
+                    <mat-icon>{{this.dataComponete.icon}}</mat-icon>
+                </div>
+                <div class="bi-body-information-card">
+                    <apx-chart [series]="this.dataComponete.values.seriesPercentage" [chart]="chartOptions.chart"
+                        [grid]="chartOptions.grid" [plotOptions]="chartOptions.plotOptions"
+                        [colors]="(this.dataComponete.values.colorSeries ?? ['#c195ef', '#63a6ed'])"
+                        [labels]="this.dataComponete.values.labelsSeries" 
+                        [legend]="{show:false}"
+                        [responsive]="chartOptions.responsive">
+                    </apx-chart>
+                    <div class="bi-body-legend-values">
+                        <ng-container *ngFor="let item of this.dataComponete.values.series ; let i = index" >
+                            <span  [ngStyle]="{'color':this.dataComponete.values.colorSeries[i] ?? colorSeries[i]}">{{this.dataComponete.values.series[i]}}%</span>
+                    </ng-container>
+                    </div>
+
+                </div>
+                <div class="bi-footer-information-card">
+                    <ng-container *ngFor="let item of this.dataComponete.values.series ; let i = index">
+                        <div class="item-value-footer">
+                            <span class="title">{{this.dataComponete.values.series[i]}}</span>
+                            <span class="value" [ngStyle]="{'color':this.dataComponete.values.colorSeries[i] ?? colorSeries[i]}">{{this.dataComponete.values.labelsSeries[i]}}</span>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
+<ng-template #Loader>
+    <app-spinner></app-spinner>
+</ng-template>

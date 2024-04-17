@@ -1,0 +1,19 @@
+<div class="chart-container-general-bi">
+    <ng-container *ngIf="this.dataComponente; else Loader">
+    <div class="bi-information-card-component">
+        <div class="bi-container-information-card-component">
+            <div class="bi-header-information-card">
+                <span>{{this.dataComponente.label}}</span>
+                <mat-icon>{{this.dataComponente.icon}}</mat-icon>
+            </div>
+            <div class="bi-body-information-card">
+                <span class="title">{{this.dataComponente.values.value}}</span>
+                <span class="subtitle">nuevos expedientes</span>
+            </div>
+        </div>
+    </div>
+    </ng-container>
+</div>
+<ng-template #Loader>
+    <app-spinner></app-spinner>
+</ng-template>

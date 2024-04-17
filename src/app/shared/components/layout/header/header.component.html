@@ -1,0 +1,117 @@
+<div class="container-main-header">
+    <ng-container *ngIf="this.seccion; else elseInstance">
+        <app-logo-company></app-logo-company>
+        <!-- <div class="header-logo">
+            <div class="container-image">
+                <div class="image-profile" style='background-image:url("./assets/imgs/logo-bi.png")'>
+                </div>
+            </div>
+            <div class="header-texts">
+                <span class="title">Fiscalia General</span>
+                <span class="subtitle">Fiscalia general del estado de yucatan</span>
+            </div>
+        </div> -->
+        <div class="header-view">
+            <div class="container-type-view" *ngIf="this.seccion">
+                <span class="label">{{this.seccion.label}}</span>
+                <ng-container *ngFor="let view of this.seccion.items">
+                    <ng-container [ngSwitch]="view.nombreComponente">
+                        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.BUTTON" class="container-spartan-bi-button">
+                            <button *ngFor="let button of view.values" class="spartan-bi-button"
+                                (click)="onSelectTipoVista(button.id)"
+                                [ngClass]="{'spartan-bi-button__click': button.id == selectedItem }">{{button.label}}</button>
+                        </div>
+                    </ng-container>
+                </ng-container>
+            </div>
+        </div>
+        <div class="header-notifications">
+            <div class="container-notifications" [hidden]="true">
+                <div class="container-change-theme">
+                    <mat-icon [ngClass]="{'active' :this.themeActual == 'dark' }" class="color-icon-notification"> dark_mode </mat-icon>
+                    <mat-slide-toggle [color]="'primary'" [checked]="this.themeActual == 'default'" (change)="onChangeTheme()" ></mat-slide-toggle>
+                    <mat-icon [ngClass]="{'active' :this.themeActual == 'default' }" class="material-symbols-outlined"> light_mode </mat-icon>
+                </div>
+                
+                <!-- <button mat-button>
+                    <mat-icon class="color-icon-notification">notifications</mat-icon>
+                </button>
+                <button mat-button>
+                    <mat-icon class="color-icon-notification">chat_bibble</mat-icon>
+                </button> -->
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #elseInstance>
+        <app-spinner></app-spinner>
+    </ng-template>
+</div>
+
+<div class="container-main-filters">
+    <div class="container-filters" *ngIf="this.seccionFilters; else elseInstance">
+        <ng-container *ngFor="let filter of seccionFilters.items">
+            <ng-container [ngSwitch]="filter.nombreComponente">
+                <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.BUTTON_GROUP" class="container-buttons-group">
+                    <span class="titleFilter">{{filter.label}}</span>
+                    <mat-button-toggle-group (change)="onChangeTabGroup($event, filter)" name="fontStyle"
+                        class="spartan-bi-button-group" aria-label="Font Style">
+                        <mat-button-toggle *ngFor="let item of filter.values" value="{{item.value}}">
+                            <mat-icon *ngIf="item.icon && item.icon !=''">{{item.icon}}</mat-icon>
+                            {{item.label}}
+                        </mat-button-toggle>
+                    </mat-button-toggle-group>
+                </div>
+
+                <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.SELECT" class="container-buttons-select">
+                    <span class="titleFilter">{{filter.label}}</span>
+                    <mat-form-field class="spartan-bi-select">
+                        <mat-select [value]="filter.values | GetItemOfArray :'selected' " 
+                            (selectionChange)="onSelectChange($event,filter)">
+                            <mat-option *ngFor="let item of filter.values" [value]="item.value"
+                                [disabled]="item.disabled ?? false">
+                                {{item.label}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+            
+                <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.MULTI_SELECT" class="container-buttons-select">
+                    <span class="titleFilter">{{filter.label}}</span>
+                    <mat-form-field class="spartan-bi-select multi">
+                        <mat-select [value]="filter.values | getItemsOfArray :'selected' "
+                        multiple
+                            (selectionChange)="onSelectChange($event,filter)">
+                            <mat-option *ngFor="let item of filter.values" [value]="item.value"
+                                [disabled]="item.disabled ?? false">
+                                {{item.label}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+            
+                <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.CHECK_SHADOW">
+                    <div class="container-check">
+                        <mat-checkbox (change)="onCheckBoxChange($event,filter)"
+                            class="spartan-bi-checkbox spartan-bi-checkbox__transparent">{{filter.label}}</mat-checkbox>
+                    </div>
+                </div>
+
+            
+                <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.BUTTON">
+                    <button class="spartan-bi-button" (click)="onSearch()">{{filter.label}}
+                        <mat-icon>{{filter.icon}}</mat-icon> </button>
+                </div>
+            </ng-container>
+        </ng-container>
+        <div>
+            <button class="spartan-bi-button" (click)="onSearch()">Aplicar filtros
+                <mat-icon>filter_list</mat-icon> </button>
+        </div>
+        <div>
+            <button class="spartan-bi-button" (click)="onLimpiarFiltros()">Limpiar Filtros
+                <mat-icon>cancel</mat-icon> </button>
+        </div>
+    </div>
+</div>

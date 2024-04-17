@@ -1,0 +1,18 @@
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    // max-width: 1820px;
+    margin: 0 auto;
+    gap: 7px;
+  }
+  
+  .flex-item-bi {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    div{
+      width: 100%;
+    }
+  }
+  

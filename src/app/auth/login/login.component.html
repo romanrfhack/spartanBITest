@@ -1,0 +1,31 @@
+<div class="main-container-login"  *blockUI="'login-full'; template: templateBlockModalUiComponent">
+    <div class="container-login flex  flex-col gap-5">
+        <app-logo-company></app-logo-company>
+        <h1 class="text-2xl font-bebas">Iniciar Sesion</h1>
+        <hr class="text-yellow" />
+        <form class="grid grid-cols-1 gap-4 p-4 spartan-bi-card " [formGroup]="form" (submit)="onLogin()" >
+            <mat-form-field class="example-full-width">
+                <mat-label >Usuario</mat-label>
+                <input type="email"  matInput formControlName="usuario" placeholder="Usuario">
+                <mat-error *ngIf="form.get('usuario')?.hasError('required')">
+                   Este campo es requerido
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" >
+                <mat-label >Constrasena</mat-label>
+                <input type="password"  matInput formControlName="password" placeholder="Contrasena">
+                <mat-error *ngIf="form.get('password')?.hasError('required')">
+                   Este campo es requerido
+                </mat-error>
+            </mat-form-field>
+            <div class="flex justify-center items-center">
+                <button type="submit" class="spartan-bi-button">Iniciar sesion</button>
+            </div>
+        </form>
+        <hr class="text-yellow" />
+        <div class="container-image">
+            <span>POWERED BY</span>
+            <img src="./assets/imgs/LOGO SPARTANE 2.png" alt="" srcset="">
+        </div>
+    </div>
+</div>

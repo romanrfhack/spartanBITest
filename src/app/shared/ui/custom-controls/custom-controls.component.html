@@ -1,0 +1,60 @@
+<div class="container-controls">
+
+    <section>
+        <button mat-raised-button (click)="changeTheme()" >
+            Cambiar Tema {{this.themeActual}}
+            <mat-icon>wb_sunny</mat-icon>
+        </button>
+    </section>
+    <section>
+        <button class="spartan-bi-button" (click)="onClickButton()"
+            [ngClass]="{'spartan-bi-button__click': this.isActive}">Por unidad</button>
+    </section>
+
+    <section>
+        <mat-button-toggle-group name="fontStyle" class="spartan-bi-button-group" aria-label="Font Style">
+            <mat-button-toggle value="bold">AMBOS</mat-button-toggle>
+            <mat-button-toggle value="italic">FEMENINO</mat-button-toggle>
+            <mat-button-toggle value="underline">MASCULINO</mat-button-toggle>
+            <mat-button-toggle value="underline">OTRO</mat-button-toggle>
+        </mat-button-toggle-group>
+    </section>
+
+    <!-- <section>
+        <mat-form-field class="spartan-bi-select">
+            <mat-select name="food">
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </section>
+
+    
+    <section>
+        <mat-form-field>
+            <mat-select name="food">
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </section>
+
+    <section>
+        <div class="wrapper-checks">
+            <mat-checkbox  class="spartan-bi-checkbox">Comparar periodos</mat-checkbox>
+            <div class="container-check">
+                <mat-checkbox  class="spartan-bi-checkbox spartan-bi-checkbox__transparent">Comparar periodos</mat-checkbox>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="container-input-search">
+            <app-input-search (onSearch)="onChangeValue($event)"></app-input-search>
+            <span>{{valueSearch}}</span>
+        </div>
+    </section> -->
+</div>

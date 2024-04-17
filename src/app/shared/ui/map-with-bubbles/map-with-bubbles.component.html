@@ -1,0 +1,10 @@
+<kendo-map [center]="center" [zoom]="4">
+    <kendo-map-layers>
+        <kendo-map-tile-layer [subdomains]="tileSubdomains" [urlTemplate]="tileUrl"
+            attribution="&copy; <a href='https://osm.org/copyright'>OpenStreetMap contributors</a>">
+        </kendo-map-tile-layer>
+        <kendo-map-bubble-layer [data]="bubbles" locationField="Location" valueField="Pop2010"
+            attribution="Population data from Nordpil and UN Population Division." [style]="bubbleStyle">
+        </kendo-map-bubble-layer>
+    </kendo-map-layers>
+</kendo-map>

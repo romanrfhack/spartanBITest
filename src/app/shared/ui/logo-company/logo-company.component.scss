@@ -1,0 +1,48 @@
+
+.header-logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-view{
+    display: flex;
+    width: 40%;
+}
+
+.container-image {
+    height: 63px;
+    width: 63px;
+    border-radius: 50%;
+    display: flex;
+}
+
+.image-profile {
+    height: 63px;
+    width: 63px;
+    background-size: cover;
+    border-radius: 50%;
+    background-position: center;
+}
+
+.header-texts {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.title {
+
+    font-size: 25px;
+    font-weight: 400;
+    color: var(--bi-text-color);
+    text-transform: uppercase;
+}
+
+.subtitle {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--bi-secondary-color);
+    text-transform: uppercase;
+}
