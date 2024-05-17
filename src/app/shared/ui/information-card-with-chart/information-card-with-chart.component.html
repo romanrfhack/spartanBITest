@@ -1,9 +1,9 @@
 <div class="chart-container-general-bi">
     <ng-container *ngIf="this.dataComponete; else Loader">
-    <div class="bi-information-card-component">
+<div class="bi-information-card-component">
         <div class="bi-container-information-card-component">
             <div class="bi-header-information-card">
-                <span class="title">{{this.dataComponete.label}}</span>
+                <span class="title" [matTooltip]="this.dataComponete.label" >{{this.dataComponete.label}}</span>
                 <mat-icon>{{this.dataComponete.icon}}</mat-icon>
             </div>
             <div class="bi-body-information-card">

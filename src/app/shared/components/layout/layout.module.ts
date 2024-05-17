@@ -17,7 +17,10 @@ import { UiSpartanBiModule } from '../../ui/ui-spartan-bi/ui-spartan-bi.module';
 import { FiltersWithChecksComponent } from '../../ui/components/filters-with-checks/filters-with-checks.component';
 import { SpinnerComponent } from '../../ui/components/spinner/spinner.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule, NativeDateAdapter} from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
 @NgModule({
   declarations: [
     FooterComponent,
@@ -36,7 +39,11 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatIconModule,
     MatButtonModule,
     UiSpartanBiModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatTooltipModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule
   ],
   exports: [
     FooterComponent,
@@ -47,5 +54,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     FiltersWithChecksComponent,
     SpinnerComponent
   ],
+  providers:[
+  ]
 })
 export class LayoutModule { }

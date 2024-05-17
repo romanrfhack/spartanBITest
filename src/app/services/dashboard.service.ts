@@ -34,15 +34,15 @@ export class DashboardService {
       dashboardId: this.idDashboard,
       viewId: tipoVista
     }
-    // return this._http.get<SeccionesDataModel>(`${this.BASE_URL}Spartan_Dashboard/Spartan_DashboardConfiguration`, {
-    //   params: new HttpParams({ fromObject: params })
-    // }).pipe(
-    //   map((data) => {
-    //     const seccionesData = new SeccionesDataModel(data)
-    //     this.metaDataGeneral$.next(seccionesData)
-    //     return seccionesData
-    //   }),catchError(this.handlerError.bind(this))
-    // )
+    return this._http.get<SeccionesDataModel>(`${this.BASE_URL}Spartan_Dashboard/Spartan_DashboardConfiguration`, {
+      params: new HttpParams({ fromObject: params })
+    }).pipe(
+      map((data) => {
+        const seccionesData = new SeccionesDataModel(data)
+        this.metaDataGeneral$.next(seccionesData)
+        return seccionesData
+      }),catchError(this.handlerError.bind(this))
+    )
     
 
     let json = 'vista-general-metadata.json'

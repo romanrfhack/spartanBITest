@@ -176,11 +176,12 @@
                 "tipo": "body",
                 "id": 3,
                 "items": [
+
                     {
                         "id": "2",
                         "label": "Nuevos",
                         "componente": "information-card-simple",
-                        "width": "156",
+                        "width": "20",
                         "icon": "menu",
                         "values": {
                             "percentageValue": "60",
@@ -191,7 +192,7 @@
                         "id": "3",
                         "label": "ATECION TEMPRANA",
                         "componente": "information-card-with-chart-donut",
-                        "width": "156",
+                        "width": "10",
                         "icon": "menu",
                         "values":{
                             "seriesPercentage":[60,40],
@@ -201,11 +202,12 @@
                     
                         }
                     },
+
                     {
                         "id": "3",
                         "label": "Menu",
                         "componente": "information-card-with-chart",
-                        "width": "156",
+                        "width": "10",
                         "icon": "menu",
                         "values": {
                             "percentageValue": "60",
@@ -216,7 +218,7 @@
                         "id": "4",
                         "label": "Settings",
                         "componente": "information-card-with-chart",
-                        "width": "156",
+                        "width": "10",
                         "icon": "settings",
                         "values": {
                             "percentageValue": "60",
@@ -227,7 +229,7 @@
                         "id": "5",
                         "label": "Done",
                         "componente": "information-card-with-chart",
-                        "width": "156",
+                        "width": "10",
                         "icon": "done",
                         "values": {
                             "percentageValue": "60",
@@ -238,7 +240,7 @@
                         "id": "6",
                         "label": "Key",
                         "componente": "information-card-with-chart",
-                        "width": "156",
+                        "width": "10",
                         "icon": "key",
                         "values": {
                             "percentageValue": "60",
@@ -249,7 +251,7 @@
                         "id": "7",
                         "label": "Sync",
                         "componente": "information-card-with-chart",
-                        "width": "156",
+                        "width": "10",
                         "icon": "sync",
                         "values": {
                             "percentageValue": "60",
@@ -260,7 +262,7 @@
                         "id": "8",
                         "label": "Genero",
                         "componente": "information-card-with-chart",
-                        "width": "156",
+                        "width": "10",
                         "icon": "wc",
                         "values": {
                             "percentageValue": "60",
@@ -271,7 +273,7 @@
                         "id": "9",
                         "label": "Genero",
                         "componente": "information-card-with-chart",
-                        "width": "156",
+                        "width": "10",
                         "icon": "wc",
                         "values": {
                             "percentageValue": "60",
@@ -282,7 +284,7 @@
                         "id": "10",
                         "label": "Genero",
                         "componente": "information-card-with-chart",
-                        "width": "156",
+                        "width": "10",
                         "icon": "wc",
                         "values": {
                             "percentageValue": "60",
@@ -293,7 +295,7 @@
                         "id": "11",
                         "label": "Genero",
                         "componente": "information-card-with-chart",
-                        "width": "156",
+                        "width": "10",
                         "icon": "wc",
                         "values": {
                             "percentageValue": "60",
@@ -304,7 +306,7 @@
                         "id": "12",
                         "label": "SiMPLE",
                         "componente": "information-card-simple",
-                        "width": "156",
+                        "width": "10",
                         "icon": "home",
                         "values": {
                             "percentageValue": "60",
@@ -317,7 +319,7 @@
                         "componente": "filter-checks-with-search",
                         "divWidth": 20,
                         "divHeight": 100,
-                        "width": "600",
+                        "width": "50",
                         "values": [
                             {
                                 "id": "1",
@@ -344,8 +346,8 @@
                         "label": "Grafica de lineas",
                         "componente": "line-chart",
                         "divWidth": 30,
-                        "div1Height": 100,
-                        "width": "600",
+                        "div1Height": 500,
+                        "width": "100",
                         "values": {
                             "categories": [
                                 "Jan",
@@ -400,7 +402,7 @@
                         "componente": "pie-chart",
                         "divWidth": 30,
                         "div1Height": 100,
-                        "width": "600",
+                        "width": "33",
                         "values": [
                             {
                                 "category": "0-14",
@@ -430,7 +432,7 @@
                         "componente": "bar-chart",
                         "divWidth": 50,
                         "div1Height": 100,
-                        "width": "900",
+                        "width": "33",
                         "values": {
                             "categories": [
                                 "Q1",
@@ -452,7 +454,7 @@
                         "componente": "donut-chart",
                         "divWidth": 50,
                         "div1Height": 100,
-                        "width": "900",
+                        "width": "33",
                         "values": [
                             {
                                 "category": "Hydroelectric",

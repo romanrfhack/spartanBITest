@@ -1,6 +1,6 @@
 <div class="chart-container-general-bi" [hidden]="isToExport">
     <ng-container *ngIf="this.data; else Loader">
-        <kendo-chart [title]="this.data.label" class="chart-container-kendo-bi" #chartDonutExport>
+        <kendo-chart  class="chart-container-kendo-bi" #chartDonutExport>
             <ng-template kendoChartDonutCenterTemplate>
                 <h3>22.5%</h3>
                 of which renewables
@@ -13,7 +13,7 @@
                     </kendo-chart-series-item-labels>
                 </kendo-chart-series-item>
             </kendo-chart-series>
-            <kendo-chart-legend [visible]="false"></kendo-chart-legend>
+            <kendo-chart-legend [visible]="true"></kendo-chart-legend>
         </kendo-chart>
     </ng-container>
 </div>

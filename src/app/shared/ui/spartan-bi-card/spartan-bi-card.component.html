@@ -1,14 +1,27 @@
-<div class="spartan-bi-card main-container" [ngClass]="{'fullView':isFullView}">
-    <div class="w-100 flex justify-end mr-1 gap-1">
-        <button matTooltip="Exportar grafica" mat-icon-button color="accent" (click)="onExport()" >
-            <mat-icon>print</mat-icon>
-          </button>
-        <button mat-icon-button matTooltip="...">
-            <mat-icon>logout</mat-icon>
-          </button>
-        <button mat-icon-button  matTooltip="Vista completa" (click)="onFullView()">
-            <mat-icon>{{isFullView ? 'close_fullscreen' : 'open_in_full'}}</mat-icon>
-          </button>
+<div class="spartan-bi-card main-container-chart" [ngClass]="{'fullView':isFullView}">
+  <div class="header-container-chart flex justify-between">
+    <div class="mr-1 gap-1">
+      <span class="title">{{this.componente.label}}</span>
     </div>
-    <ng-content></ng-content>
+    <div class="mr-1 gap-3 flex" [hidden]="false">
+      <button matTooltip="Imprimir"  color="accent" (click)="onExport()"  [hidden]="true">
+        <span class="material-symbols-outlined">print </span>
+      </button>
+      <button matTooltip="Exportar" [matMenuTriggerFor]="menu" [hidden]="true">
+        <span class="material-symbols-outlined"> ios_share  </span>
+      </button>
+      <button matTooltip="Vista completa" (click)="onFullView()">
+        <span class="material-symbols-outlined">{{isFullView ? 'hide' : 'pan_zoom' }}</span>
+      </button>
+    </div>
+  </div>
+  <ng-content></ng-content>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <span class="menu-item-text">Exportar a imagen</span>
+    </button>
+    <button mat-menu-item >
+      <span class="menu-item-text">Exportar a pdf</span>
+    </button>
+  </mat-menu>
 </div>

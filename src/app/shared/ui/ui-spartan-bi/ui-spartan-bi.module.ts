@@ -5,10 +5,10 @@ import { CommonModule } from '@angular/common';
 import { FiltersWithChecksComponent } from '../components/filters-with-checks/filters-with-checks.component';
 import { InputSearchComponent } from '../components/input-search/input-search.component';
 import { FormsModule } from '@angular/forms';
-import { MatIconModule } from '@angular/material/icon';
+import { MatIcon, MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { GetItemOfArrayPipe } from '../../pipes/get-item-of-array.pipe';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DonutComponent } from '../charts/donut/donut.component';
 import { ChartsModule } from '@progress/kendo-angular-charts';
 import { GaugesModule } from '@progress/kendo-angular-gauges';
@@ -20,14 +20,16 @@ import { MapWithMarkersComponent } from '../map-with-markers/map-with-markers.co
 import { LogoCompanyComponent } from '../logo-company/logo-company.component';
 import { InformationCardWithCircularGaugeComponent } from '../information-card-with-circular-gauge/information-card-with-circular-gauge.component';
 import { SpartanBiCardComponent } from '../spartan-bi-card/spartan-bi-card.component';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { ExportChartComponent } from '../components/export-chart/export-chart.component';
 import { LineComponent } from '../charts/line/line.component';
 import { PieComponent } from '../charts/pie/pie.component';
 import { BarComponent } from '../charts/bar/bar.component';
 import { InformationCardWithDonutChartComponent } from '../information-card-with-donut-chart/information-card-with-donut-chart.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
-
+import { InformationCardWithDonutChartKendoComponent } from '../information-card-with-donut-chart-kendo/information-card-with-donut-chart-kendo.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [
     FiltersWithChecksComponent,
@@ -42,12 +44,14 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     MapWithMarkersComponent,
     LogoCompanyComponent,
     InformationCardWithCircularGaugeComponent,
-    SpartanBiCardComponent,  
+    SpartanBiCardComponent,
     ExportChartComponent,
     LineComponent,
     BarComponent,
     PieComponent,
-    InformationCardWithDonutChartComponent
+    InformationCardWithDonutChartComponent,
+    InformationCardWithDonutChartKendoComponent,
+
   ],
   imports: [
     CommonModule,
@@ -60,8 +64,11 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     MapModule,
     MatTooltipModule,
     NgApexchartsModule,
+    MatIconModule,
+    MatMenuModule,
+    MatButtonModule
   ],
-  exports:[
+  exports: [
     FiltersWithChecksComponent,
     InputSearchComponent,
     GetItemOfArrayPipe,
@@ -74,12 +81,14 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     MapWithMarkersComponent,
     LogoCompanyComponent,
     InformationCardWithCircularGaugeComponent,
-    SpartanBiCardComponent,  
+    SpartanBiCardComponent,
     ExportChartComponent,
     LineComponent,
     BarComponent,
     PieComponent,
-    InformationCardWithDonutChartComponent
+    InformationCardWithDonutChartComponent,
+    InformationCardWithDonutChartKendoComponent,
+
   ]
 })
 export class UiSpartanBiModule { }

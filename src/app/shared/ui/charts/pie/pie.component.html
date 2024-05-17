@@ -1,6 +1,6 @@
 <div class="chart-container-general-bi" [hidden]="isToExport">
   <ng-container *ngIf="this.lineData; else Loader"> 
-  <kendo-chart [title]="this.lineData.label"  #chartPieExport class="chart-container-kendo-bi">
+  <kendo-chart   #chartPieExport class="chart-container-kendo-bi">
     <kendo-chart-legend position="bottom"></kendo-chart-legend>
     <kendo-chart-series>
       <kendo-chart-series-item type="pie" [data]="this.lineData.values" field="value" categoryField="category"

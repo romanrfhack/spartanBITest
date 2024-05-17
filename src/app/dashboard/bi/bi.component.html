@@ -24,9 +24,9 @@
 
 <div *ngIf="this.componentsMetadata">
   <div class="flex-container">
-    <div *ngFor="let component of this.componentsMetadata.items" class="flex-item-bi" [style.width.px]="component.width"
-      [style.height.px]="component.height">
-      
+    
+    <div *ngFor="let component of this.componentsMetadata.items" class="flex-item-bi" [style.width]="component.width"
+      [style.height]="component.height">
       <ng-container [ngSwitch]="component.nombreComponente">
         <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.INFORMATION_CARD_SIMPLE">
           <app-information-card-only-text [metadataComponente]="component"></app-information-card-only-text>
@@ -42,36 +42,36 @@
             <app-bar [metadataComponente]="component"></app-bar>
           </app-spartan-bi-card>
         </div>
-        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.LINE_CHART" class="spartan-bi-card">
+        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.LINE_CHART">
           <app-spartan-bi-card [componente]="component">
             <app-line [metadataComponente]="component"></app-line>
           </app-spartan-bi-card>
         </div>
-        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.PIE_CHART" class="spartan-bi-card">
+        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.PIE_CHART">
           <app-spartan-bi-card [componente]="component">
             <app-pie [metadataComponente]="component"></app-pie>
           </app-spartan-bi-card>
         </div>
-        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.DONUT_CHART" class="spartan-bi-card">
+        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.DONUT_CHART">
           <app-spartan-bi-card [componente]="component">
             <app-donut [metadataComponente]="component"></app-donut>
           </app-spartan-bi-card>
         </div>
-        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.MAP_WITH_BUBLES" class="spartan-bi-card">
+        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.MAP_WITH_BUBLES">
           <app-spartan-bi-card [componente]="component">
             <app-map-with-bubbles></app-map-with-bubbles>
           </app-spartan-bi-card>
         </div>
-        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.MAP_WITH_MARKERS" class="spartan-bi-card">
+        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.MAP_WITH_MARKERS">
           <app-spartan-bi-card [componente]="component">
             <app-map-with-markers></app-map-with-markers>
           </app-spartan-bi-card>
         </div>
-        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.FILTER_CHECK_WITH_SEARCH" class="spartan-bi-card">
+        <!-- <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.FILTER_CHECK_WITH_SEARCH">
           <app-filters-with-checks (checksEmit)="onFiltersWithChecks($event)"
             (searchInputEmit)="onSearchFiltersWithChecks($event)" [metadataComponente]="component"
             class="app-filters-with-checks"> </app-filters-with-checks>
-        </div>
+        </div> -->
       </ng-container>
     </div>
   </div>

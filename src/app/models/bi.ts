@@ -24,5 +24,7 @@ export interface Componente {
   defaultValueInValues?: any
   width?:string
   idHtml?:string
+  isChartComponent?:boolean
+  filterName?:string
 }
 

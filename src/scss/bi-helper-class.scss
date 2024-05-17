@@ -293,3 +293,24 @@ mat-checkbox.spartan-bi-checkbox-transparent {
 .chart-container-general-bi{
     @include flex-start-w-100;
 }
+
+.btn-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    font-size: 2.5rem;
+    background: #D5D5D5;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .btn-circle:hover {
+    background: var(--bi-secondary-color);
+    line-height: 3px;
+    outline: none;
+  }

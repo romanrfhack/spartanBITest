@@ -7,13 +7,15 @@ import { Componente, SeccionesData } from 'src/app/models/bi';
 import { environment } from 'src/app/environments/environment';
 import * as _ from 'lodash';
 import { ComponenteModel, SeccionModel, SeccionesDataModel } from 'src/app/models/seccion.data';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
+import { CONSTANTS } from 'src/app/shared/constants/constants';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-
+  @BlockUI('dashboard-full') blockUI: NgBlockUI | undefined;
   @Input()
   set metadataInput(metadata: any) {
     if (!metadata) {
@@ -59,39 +61,45 @@ export class HeaderComponent {
         this.selectedItem = componente.defaultValueInValues.id
       }
     })
-
-    console.log(this.seccion)
   }
 
   onSelectTipoVista(id: any) {
-    console.log(id)
     this.selectedItem = id
     this.onChangeTipoVista.emit(this.selectedItem)
   }
 
   onSearch() {
+    this.blockUI.start();
     this._dashboardService.getSectionBodyDashboard(this.queryParams).pipe(take(1)).subscribe((data: SeccionesData) => {
+      this.blockUI.stop()
+    }, err => {
+      this.blockUI.stop()
+      console.log(`err`, err)
     })
   }
 
-  onChangeTabGroup($event: any, filter: any) {
-    this.queryParams = { ...this.queryParams, [filter.value]: $event.value }
+  onChangeTabGroup($event: any, filter: ComponenteModel) {
+    this.queryParams = { ...this.queryParams, [filter.filterName]: $event.value }
   }
 
-  onSelectChange($event: any, filter: any) {
-    this.queryParams = { ...this.queryParams, [filter.value]: $event.value }
+  onSelectChange($event: any, filter: ComponenteModel) {
+    this._checkSelectAll($event, filter)
+    this.queryParams = { ...this.queryParams, [filter.filterName]: $event.value.join() }
   }
 
   onCheckBoxChange($event: any, filter: any) {
-    this.queryParams = { ...this.queryParams, [filter.value]: $event.checked }
+    this.queryParams = { ...this.queryParams, [filter.filterName]: $event.checked }
   }
 
   onLimpiarFiltros() {
+    this.blockUI.start()
     this.queryParams = {}
     this._onClearFilters()
     const idViewDefault = environment.idViewDefault
     this._dashboardService.getSectionDashboard(idViewDefault).pipe(take(1)).subscribe((data: SeccionesData) => {
-    })
+      this.blockUI.stop()
+    }, err => this.blockUI.stop()
+    )
   }
 
   onChangeTheme() {
@@ -127,6 +135,26 @@ export class HeaderComponent {
 
   public get ENUM_TIPO_DE_COMPONETES(): typeof ENUM_TIPO_DE_COMPONETES {
     return ENUM_TIPO_DE_COMPONETES;
+  }
+
+  private _checkSelectAll(itemSelected, filter: ComponenteModel) {
+    console.log(`itemSelected`, itemSelected)
+    debugger
+    if (filter.nombreComponente == ENUM_TIPO_DE_COMPONETES.MULTI_SELECT) {
+      if (itemSelected.value[0] == null) {
+        for (const item of filter.values) {
+          item.selected = true
+        }
+        const indexComponente = this.seccionFilters.items.findIndex((c:Componente) =>  c.filterName == filter.filterName)
+        if(indexComponente != -1){
+          this.seccionFilters.items[indexComponente].values= filter.values
+        }
+        console.log(this.seccionFilters)
+      } else {
+        //filter.values = filter.values.filter((item:any) => item.id != n)
+      }
+    }
+
   }
 
 }

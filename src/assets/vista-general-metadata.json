@@ -61,57 +61,47 @@
                     },
                     {
                         "id": "12",
-                        "label": "Tipo de victima",
+                        "label": "Tipo de delito",
                         "componente": "multi-select",
                         "values": [
                             {
                                 "id": "1",
                                 "value": "1",
-                                "label": "Ambos",
-                                "icon": "wc",
+                                "label": "Todos",
                                 "selected": true
+
+                            },
+                            {
+                                "id": "1",
+                                "value": "1",
+                                "label": "Robo",
+                                "selected": false
 
                             },
                             {
                                 "id": "2",
                                 "value": "2",
-                                "label": "Femenino",
-                                "icon": "woman"
+                                "label": "Homicidio",
+                                "selected": false    
                             },
                             {
                                 "id": "3",
                                 "value": "3",
-                                "label": "Masculino",
-                                "icon": "man",
-                                "selected": true    
+                                "label": "Fraude",
+                                "selected": false    
                             },
                             {
                                 "id": "3",
                                 "value": "3",
-                                "label": "Masculino",
-                                "icon": "man",
-                                "selected": true    
+                                "label": "Asalto",
+                                "selected": false    
                             },
                             {
                                 "id": "3",
                                 "value": "3",
-                                "label": "Masculino",
+                                "label": "Amenzas",
                                 "icon": "man",
-                                "selected": true    
-                            },
-                            {
-                                "id": "3",
-                                "value": "3",
-                                "label": "Masculino",
-                                "icon": "man",
-                                "selected": true    
-                            },
-                            {
-                                "id": "3",
-                                "value": "3",
-                                "label": "Masculino",
-                                "icon": "man",
-                                "selected": true    
+                                "selected": false    
                             }
                         ]
                     },
@@ -264,28 +254,6 @@
                                         240,
                                         156,
                                         98
-                                    ]
-                                },
-                                {
-                                    "data": [
-                                        165,
-                                        210,
-                                        287,
-                                        144,
-                                        190,
-                                        167,
-                                        212
-                                    ]
-                                },
-                                {
-                                    "data": [
-                                        56,
-                                        140,
-                                        195,
-                                        46,
-                                        123,
-                                        78,
-                                        95
                                     ]
                                 }
                             ]

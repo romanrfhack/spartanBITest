@@ -95,7 +95,6 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.blockUI?.start()
     // if(!localStorage.getItem(CONSTANTS.ACCESS_TOKEN)){
     //   this.authService.getAuthorization().pipe(take(1)).subscribe((token) =>{
     //       this._getDashboardData(1)    
@@ -120,11 +119,13 @@ export class DashboardComponent implements OnInit {
 
   private _getDashboardData(tipoVista: number) {
     try {
+      this.blockUI?.start()
       this._dashboardService.getSectionDashboard(tipoVista).pipe(take(1)).subscribe((data) => {
         this.blockUI?.stop()
         this.metada = data
       }, err => {
         this.blockUI?.stop()
+        console.log(`err`, err)
       }) 
     } catch (error) {
       this.blockUI?.stop()

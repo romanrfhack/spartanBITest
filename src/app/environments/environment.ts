@@ -7,5 +7,6 @@ export const environment = {
     version: 'api/v1',
     secretCrypto: 'TTSP4RT4N3_CRYPT0_S3CR3T',
     idDashboardDefault : 1,
-    idViewDefault: 1
+    idViewDefault: 1,
+    versionApp:"0.0.1"
   };

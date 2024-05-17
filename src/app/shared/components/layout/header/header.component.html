@@ -43,7 +43,7 @@
         </div>
     </ng-container>
     <ng-template #elseInstance>
-        <app-spinner></app-spinner>
+        <!-- <app-spinner></app-spinner> -->
     </ng-template>
 </div>
 
@@ -80,12 +80,12 @@
                     <span class="titleFilter">{{filter.label}}</span>
                     <mat-form-field class="spartan-bi-select multi">
                         <mat-select [value]="filter.values | getItemsOfArray :'selected' "
-                        multiple
-                            (selectionChange)="onSelectChange($event,filter)">
-                            <mat-option *ngFor="let item of filter.values" [value]="item.value"
+                         multiple
+                         (selectionChange)="onSelectChange($event,filter)">
+                         <mat-option *ngFor="let item of filter.values" [value]="item.value"
                                 [disabled]="item.disabled ?? false">
                                 {{item.label}}
-                            </mat-option>
+                         </mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
@@ -106,12 +106,29 @@
             </ng-container>
         </ng-container>
         <div>
-            <button class="spartan-bi-button" (click)="onSearch()">Aplicar filtros
-                <mat-icon>filter_list</mat-icon> </button>
+            <button class="btn-circle" (click)="onSearch()" [matTooltip]="'Aplicar selección'">
+                <span class="material-symbols-outlined">
+                    filter_alt
+                    </span>
+            </button>
         </div>
         <div>
-            <button class="spartan-bi-button" (click)="onLimpiarFiltros()">Limpiar Filtros
-                <mat-icon>cancel</mat-icon> </button>
+            <button class="btn-circle" (click)="onLimpiarFiltros()" [matTooltip]="'Limpiar selección'" >
+                <span class="material-symbols-outlined">
+                    filter_alt_off
+                    </span>
+            </button>
         </div>
+        <!-- <section>
+            <mat-form-field>
+                <mat-label>Ingresa un rango de fechas</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate placeholder="Start date">
+                  <input matEndDate placeholder="End date">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              </mat-form-field>
+        </section> -->
     </div>
 </div>

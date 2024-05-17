@@ -13,11 +13,11 @@ import { BlockUI, NgBlockUI, BlockUIModule } from 'ng-block-ui';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpInterceptorService } from './interceptors/http-interceptor.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     BlockComponent,
-
   ],
   imports: [
     BrowserModule,

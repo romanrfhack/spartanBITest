@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { ChartComponent } from '@progress/kendo-angular-charts';
 import { Componente } from 'src/app/models/bi';
+import { CONSTANTS } from 'src/app/shared/constants/constants';
 import { ENUM_TIPO_DE_COMPONETES } from 'src/app/shared/enums/enums';
 
 @Component({
@@ -22,6 +23,7 @@ export class LineComponent implements AfterViewInit {
     }
     this._setDataComponente(metadata)
   }
+  public readonly ESTILO_GRAFICAS = CONSTANTS.ESTILO_GRAFICAS
   constructor(){}
 
   ngAfterViewInit(): void {

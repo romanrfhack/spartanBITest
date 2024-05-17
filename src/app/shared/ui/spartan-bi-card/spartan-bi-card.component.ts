@@ -9,7 +9,9 @@ import { DonutComponent } from '../charts/donut/donut.component';
 import { BarComponent } from '../charts/bar/bar.component';
 import { LineComponent } from '../charts/line/line.component';
 import { PieComponent } from '../charts/pie/pie.component';
-
+import { MatIconRegistry } from '@angular/material/icon';
+import printJS from 'print-js'
+import { head } from 'lodash';
 @Component({
   selector: 'app-spartan-bi-card',
   templateUrl: './spartan-bi-card.component.html',
@@ -26,9 +28,13 @@ export class SpartanBiCardComponent implements AfterViewInit {
     private PdfGeneratorServiceService: PdfGeneratorServiceService,
     private renderer: Renderer2,
     private elementRef: ElementRef,
-    private viewRef: ViewContainerRef
+    private viewRef: ViewContainerRef,
+    private _matIconRegistery:MatIconRegistry
   ) {
 
+  }
+
+  private addIcons(){
   }
 
   getElementById(id: string): HTMLElement {
@@ -36,7 +42,6 @@ export class SpartanBiCardComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log(`compoennte`, this.componente)
   }
 
 
@@ -52,25 +57,26 @@ export class SpartanBiCardComponent implements AfterViewInit {
 
   async onExport() {
     try {
-      
       const compRef = this._getComponentChartDinamically()
-      compRef.setInput('metadataComponente', this.componente)
       compRef.setInput('isToExport', true)
+      compRef.setInput('metadataComponente', this.componente)
       const image = await firstValueFrom(compRef.instance.eventImage)
-      if (image) {
-        var docDefinition = {
-          content: [
-            'test to export chart',
-            {
-              image: image,
-              fit: [300, 300],
-            }
-          ]
-        };
+      printJS({printable: image, type: 'image' ,header:'' , documentTitle:'',})
+      // console.log(image)
+      // if (image) {
+      //   var docDefinition = {
+      //     content: [
+      //       'test to export chart',
+      //       {
+      //         image: image,
+      //         fit: [300, 300],
+      //       }
+      //     ]
+      //   };
 
-        this.PdfGeneratorServiceService.generatePDF(docDefinition, "pdftest")
-        compRef.destroy()
-      }
+      //   this.PdfGeneratorServiceService.generatePDF(docDefinition, "pdftest")
+      //   compRef.destroy()
+      // }
     } catch (error) {
       console.log(error)
       throw error

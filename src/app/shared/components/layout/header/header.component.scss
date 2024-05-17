@@ -1,3 +1,15 @@
+
+mat-select{
+    --mdc-filled-text-field-container-color:var(--bi-gray-color)
+}
+
+::ng-deep{
+    mat-date-range-input{
+        background-color: red;
+    }
+}
+
+
 .container-main-filters{
     display: flex;
 }
@@ -98,7 +110,8 @@
     justify-content: flex-start;
     align-items: center;
     gap: 20px;
-    margin-top: 20px;
+    margin: 20px 0;
+
     flex-wrap: wrap;
 }
 

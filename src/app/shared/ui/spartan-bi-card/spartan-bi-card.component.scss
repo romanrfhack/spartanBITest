@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    .main-container{
+    .main-container-chart{
         display: flex;
         flex-direction: column;
     }
@@ -16,6 +16,22 @@
         bottom:0px;
         left:0px;
         z-index: 10;
+        ::ng-deep{
+            app-line, app-pie, app-bar, app-map-with-bubbles{
+                div{
+                    kendo-chart{
+                        height: 90vh !important;
+                    }       
+                }
+                kendo-map{
+                    height: 90vh !important;
+                    .k-map{
+                        height: 90vh;
+                    }
+                }
+            }
+        }
+
     }
 
     mat-icon{
@@ -23,4 +39,13 @@
         color: var(--bi-gray-ligth-color-2);
 
     }
+
+    .material-symbols-outlined{
+        color: var(--bi-gray-ligth-color-2);
+        font-size: 20px;
+    }
+}
+
+.menu-item-text{
+    color: var(--bi-secondary-color);
 }

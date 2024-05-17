@@ -1,16 +1,28 @@
 <div class="chart-container-general-bi" [hidden]="isToExport">
   <ng-container *ngIf="this.lineData; else Loader">
     <kendo-chart class="chart-container-kendo-bi"  #chartLineExport >
-      <kendo-chart-title [text]="this.lineData.label"></kendo-chart-title>
+      
       <kendo-chart-category-axis>
-        <kendo-chart-category-axis-item [categories]="this.lineData.values.categories"
-          [title]="{ text: this.lineData.values.title ?? '' }">
+        <kendo-chart-category-axis-item
+          [categories]="this.lineData.values.categories"
+          [labels]="{font:ESTILO_GRAFICAS.font, color:ESTILO_GRAFICAS.secondaryColor}">
         </kendo-chart-category-axis-item>
       </kendo-chart-category-axis>
-      <kendo-chart-series>
-        <kendo-chart-series-item *ngFor="let item of this.lineData.values.series" type="line" [data]="item.data">
+
+      <kendo-chart-value-axis>
+        <kendo-chart-value-axis-item [labels]="{font:ESTILO_GRAFICAS.font, color:ESTILO_GRAFICAS.secondaryColor}">
+        </kendo-chart-value-axis-item>
+    </kendo-chart-value-axis>
+
+      <kendo-chart-series [title]="false">
+        <kendo-chart-series-item *ngFor="let item of this.lineData.values.series"
+         type="line" 
+         [color]="ESTILO_GRAFICAS.primaryColor"
+         [labels]="{visible:true, font:ESTILO_GRAFICAS.font, color:ESTILO_GRAFICAS.primaryColor}" 
+         [data]="item.data">
         </kendo-chart-series-item>
       </kendo-chart-series>
+
     </kendo-chart>
   </ng-container>
 </div>

@@ -11,6 +11,5 @@ export const INFORMATION_DONUT = {
         series:[44,55],
         colorSeries:['#c195ef', '#63a6ed'],
         labelsSeries:['Hombres','Mujeres']
-
     }
 }

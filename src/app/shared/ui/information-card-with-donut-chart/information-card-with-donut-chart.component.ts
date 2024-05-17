@@ -25,7 +25,7 @@ export type ChartOptions = {
 })
 export class InformationCardWithDonutChartComponent {
   public value = 50;
-  public dataComponete: ComponenteModel | null = INFORMATION_DONUT
+  public dataComponete: ComponenteModel  = INFORMATION_DONUT
   public chartOptions: Partial<ChartOptions>;
   colorSeries:['#c195ef', '#63a6ed'];
   @Input()

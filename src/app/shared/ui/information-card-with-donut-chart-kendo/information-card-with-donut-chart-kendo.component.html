@@ -1,0 +1,40 @@
+<div class="chart-container-general-bi">
+    <ng-container *ngIf="this.dataComponete; else Loader">
+    <div class="bi-information-card-component">
+        <div class="bi-container-information-card-component">
+            <div class="bi-header-information-card">
+                <span class="title" [hidden]="true">{{this.dataComponete.label}}</span>
+                <mat-icon>{{this.dataComponete.icon}}</mat-icon>
+            </div>
+            <div class="bi-body-information-card">
+                <kendo-chart  [style.height.px]="200" [style.width.px]="200" [title]="this.dataComponete.label" class="chart-container-kendo-bi" #chartDonutExport>
+                    <ng-template kendoChartDonutCenterTemplate>
+                        <h3>22.5%</h3>
+                        of which renewables
+                    </ng-template>
+                    <kendo-chart-legend position="bottom"></kendo-chart-legend>
+                    <kendo-chart-series>
+                        <kendo-chart-series-item type="donut"
+                           [gap]="10" 
+                           [data]="this.dataComponete.values"
+                           field="value"
+                           [size]="10"
+                            categoryField="category">
+                            <kendo-chart-series-item-labels [content]="labelContent" color="#fff" background="none">
+                            </kendo-chart-series-item-labels>
+                        </kendo-chart-series-item>
+                    </kendo-chart-series>
+                    <kendo-chart-legend [visible]="false"></kendo-chart-legend>
+                </kendo-chart>
+                <div class="container-values">
+                    <span class="value">{{this.dataComponete.values.value}}</span>
+                    <span class="value-subtitle">{{this.dataComponete.label}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </ng-container>
+</div>
+<ng-template #Loader>
+    <app-spinner></app-spinner>
+</ng-template>
