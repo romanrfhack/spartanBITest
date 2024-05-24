@@ -1,6 +1,27 @@
 # PlantillaSpartaneAngular
-
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7.
+
+## Instalación
+
+En caso de tener multiples proyectos, cada uno con su dependencia correspondiente a una version en especifico de Anulas / NodeJS, se sugiere instalar NVM 
+y realizar la administración de versiones desde ahi por linea de comandos
+
+nvm install v18.14.2
+
+nvm list (validación de versiones)
+
+nvm use 18 (ENTER)
+
+npm install --legacy-peer-deps
+
+ng serve -o
+
+NOTA: en caso de tener algun mensaje de error, levantar el proyecto con:
+
+npm run ng serve -o![image](https://github.com/TotalTechDevelopment/Spartan-Bi/assets/167379336/50243a29-ae2b-4297-aa5f-3178cd270bbb)
+
+
+
 
 ## Development server
 
