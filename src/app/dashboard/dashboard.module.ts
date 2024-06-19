@@ -12,33 +12,28 @@ import { UiSpartanBiModule } from '../shared/ui/ui-spartan-bi/ui-spartan-bi.modu
 import { BlockUIModule } from 'ng-block-ui';
 import { BlockComponent } from '../shared/ui/components/block/block.component';
 import { authGuard } from '../auth.guard';
+import { SelectDashboardComponent } from './select-dashboard/select-dashboard.component';
 
 const routes: Route[] = [
   {
     path: '',
+    component: SelectDashboardComponent,        
+    canActivate: [authGuard]
+  },
+  {
+    path: 'bi/:dashboardId',
     component: DashboardComponent,
-    children: [
-      {
-        path: '', component: BIComponent, 
-        canActivate: [authGuard]        
-      },
-      // {
-      //   path: 'page-not-found',
-      //   loadChildren: () => import('./page404/page404.module')
-      //     .then( m => m.Page404Module ),
-      // },
-      {
-        path: '**',
-        redirectTo: 'page-not-found',
-      }
-    ],
+    canActivate: [authGuard]    
   }
+    
+
 ];
 
 @NgModule({
   declarations: [
     DashboardComponent,
     BIComponent,
+    SelectDashboardComponent,
     
   ],
 

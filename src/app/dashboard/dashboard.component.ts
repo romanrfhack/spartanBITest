@@ -7,6 +7,7 @@ import { BlockComponent } from '../shared/ui/components/block/block.component';
 import { AuthService } from '../services/auth.service';
 import { CONSTANTS } from '../shared/constants/constants';
 import { SeccionesData } from '../models/bi';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -84,10 +85,12 @@ export class DashboardComponent implements OnInit {
 
   public metada: SeccionesData | null = null
   @BlockUI('dashboard-full') blockUI: NgBlockUI | undefined;
+  dashboardId: number | null = null;
   public templateBlockModalUiComponent: BlockComponent = BlockComponent;
   constructor(
     private _dashboardService: DashboardService,
     private  authService: AuthService,
+    private route: ActivatedRoute,
     private _localStorageService:LocalStorageService
     )
  {
@@ -95,14 +98,18 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // if(!localStorage.getItem(CONSTANTS.ACCESS_TOKEN)){
-    //   this.authService.getAuthorization().pipe(take(1)).subscribe((token) =>{
-    //       this._getDashboardData(1)    
-    //   })
-    // }else{
-      this._getDashboardData(1)
-    // }
     
+    this.route.paramMap.subscribe(params => {
+      this.dashboardId = +params.get('dashboardId');
+      // Aquí puedes agregar lógica para obtener los detalles del dashboard usando el ID
+      console.log(`this.dashboardId`, this.dashboardId)
+      this._getDashboardData(1)
+    });
+
+
+    
+    
+        
   }
 
   onFiltersWithChecks(data: any) {
@@ -117,10 +124,14 @@ export class DashboardComponent implements OnInit {
     this._getDashboardData(idTipoVista)
   }
 
-  private _getDashboardData(tipoVista: number) {
+  
+
+  
+
+  private _getDashboardData(idDashboard: number) {
     try {
       this.blockUI?.start()
-      this._dashboardService.getSectionDashboard(tipoVista).pipe(take(1)).subscribe((data) => {
+      this._dashboardService.getSectionDashboard(idDashboard).pipe(take(1)).subscribe((data) => {
         this.blockUI?.stop()
         this.metada = data
       }, err => {

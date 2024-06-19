@@ -1,0 +1,83 @@
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    // max-width: 1820px;
+    margin: 0 auto;
+    gap: 7px;
+  }
+  
+  .flex-item-bi {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    div{
+      width: 100%;
+    }
+
+    ng-container{
+      width: 100%;
+    }
+  }
+  
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;    
+  }
+  
+  .card {    
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    width: calc(33.333% - 32px);
+    box-sizing: border-box;
+    
+  }
+  
+  .card h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+  }
+  
+  .card p {
+    color: #DEA600;
+    margin: 8px 0;
+  }
+
+
+  h3.bebas {
+    font-size: 1.75rem;
+    font-family: 'Bebas Neue';
+    color: #323332;
+}
+
+.icon-container {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  font-family: 'Roboto Condensed', Arial, Helvetica, sans-serif;
+  size: 11px;
+}
+
+.default-icon,
+.hover-icon {
+  position: absolute;  
+  transition: opacity 0.3s;
+}
+
+.hover-icon {
+  opacity: 0;
+}
+
+.icon-container:hover .default-icon {
+  opacity: 0;
+}
+
+.icon-container:hover .hover-icon {
+  opacity: 1;
+}

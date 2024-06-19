@@ -1,5 +1,12 @@
 <div class="container-main-header">
     <ng-container *ngIf="this.seccion; else elseInstance">
+        <div (click)="misDashboards()" class="icon-container px-2 py-2 rounded-full bg-[#323332] hover:bg-[#dea600] hover:cursor-pointer w-10 h-10 relative">
+            <img src="../../../assets/imgs/ico_back-bco.svg" alt="Regresar a mis dashboards" class="default-icon">
+            <img src="../../../assets/imgs/ico_back-black.svg" alt="Regresar a mis dashboards" class="hover-icon">
+            <div class="tooltip hidden bg-[#323332] text-[#fff] px-2 w-[13rem] rounded-lg mt-11 absolute top-full left-1/2 transform -translate-x-1/2">
+              Regresar a mis dashboards
+            </div>
+          </div>
         <app-logo-company></app-logo-company>
         <!-- <div class="header-logo">
             <div class="container-image">

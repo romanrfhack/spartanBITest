@@ -1,0 +1,30 @@
+<div class="main-dashboard p-5" *blockUI="'dashboard-full'; template: templateBlockModalUiComponent">
+  <div class="flex gap-4 items-center">
+    
+    
+    <app-logo-company height="56px"></app-logo-company>
+  </div>
+  <div class="d-sm-flex justify-content-start mb-2 pt-5">
+    <h3 class="me-3 mt-3 bebas">Selecciona uno de los dashboards que tienes disponibles:</h3>
+  </div>
+  <div class="dashboard">
+    <!-- HEADER -->
+    <!-- SIDEBAR & PAGE CONTENT -->
+    <div class="card-container" *ngIf="dashboards">
+      <div class="card" *ngFor="let dashboard of dashboards" (click)="onCardClick(dashboard.Dashboard_Id)">
+        <img src="../../../assets/imgs/dashboard_icon.svg">
+        <h3>{{ dashboard.Title }}</h3>
+        <p>{{ dashboard.Description }}</p>
+        <!-- <p><strong>Type:</strong> {{ dashboard.Dashboard_Type_Spartan_Dashboard_Type.Description }}</p>
+            <p><strong>Status:</strong> {{ dashboard.Status_Spartan_Dashboard_Status.Description }}</p>
+            <p><strong>Creation Date:</strong> {{ dashboard.Creation_Date | date }}</p> -->
+      </div>
+    </div>
+
+
+    <!-- FOOTER -->
+    <!-- <div class="dashboard-footer">
+      <app-footer></app-footer>
+  </div> -->
+  </div>
+</div>

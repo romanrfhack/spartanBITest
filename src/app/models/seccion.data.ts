@@ -40,7 +40,7 @@ export class ComponenteModel implements Componente {
     height?: string
     idHtml?: string
     isChartComponent?: boolean
-    filterName?:string = ''
+    filterName?:string = ''    
     constructor(data: any) {
         this.id = data.id ?? this.id
         this.nombreComponente = data.componente ?? this.nombreComponente
@@ -51,7 +51,7 @@ export class ComponenteModel implements Componente {
         this.selected = data.selected ?? this.selected
         this.disabled = data.disabled ?? this.disabled
         this.width = this._setWidth(data.width) ?? this.width
-        this.height = this.height    //this._setHeigth(data.div1Height) ?? this.height
+        this.height = this._setHeigth(data.divHeight) ?? this.height  //this.height 
         this.idHtml = `C${new ObjectID().toHexString().toString()}`;
         this.filterName = data.value ?? this.filterName
     }
@@ -81,8 +81,8 @@ export class ComponenteModel implements Componente {
     }
 
     
-    private _setHeigth?(div1Height: string = '0') {
-            return `${div1Height}px`
+    private _setHeigth?(div1Height: string = '0') {                
+        return `${Number(div1Height)}px`       
     }
 
 }

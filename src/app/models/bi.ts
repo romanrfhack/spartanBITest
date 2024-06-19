@@ -23,6 +23,7 @@ export interface Componente {
   disabled?: boolean;
   defaultValueInValues?: any
   width?:string
+  height?:string
   idHtml?:string
   isChartComponent?:boolean
   filterName?:string

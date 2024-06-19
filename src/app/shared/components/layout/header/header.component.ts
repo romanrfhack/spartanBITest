@@ -9,6 +9,7 @@ import * as _ from 'lodash';
 import { ComponenteModel, SeccionModel, SeccionesDataModel } from 'src/app/models/seccion.data';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { CONSTANTS } from 'src/app/shared/constants/constants';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -33,7 +34,8 @@ export class HeaderComponent {
   themeActual = 'default'
   constructor(
     private _dashboardService: DashboardService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private _router: Router, 
   ) {
 
   }
@@ -156,5 +158,9 @@ export class HeaderComponent {
     }
 
   }
+
+  misDashboards() {    
+    this._router.navigate(['/dashboard']);    
+  }	
 
 }

@@ -133,3 +133,30 @@ mat-select{
         color: var(--bi-secondary-color);
     }
 }
+
+.icon-container {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    font-family: 'Roboto Condensed', Arial, Helvetica, sans-serif;
+    size: 11px;
+  }
+  
+  .default-icon,
+  .hover-icon {
+    position: absolute;  
+    transition: opacity 0.3s;
+  }
+  
+  .hover-icon {
+    opacity: 0;
+  }
+  
+  .icon-container:hover .default-icon {
+    opacity: 0;
+  }
+  
+  .icon-container:hover .hover-icon {
+    opacity: 1;
+  }
+  

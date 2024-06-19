@@ -1,23 +1,23 @@
-<div class="chart-container-general-bi">
+<div class="flex items-center justify-center h-screen chart-container-general-bi" [style.height]="dataComponete.height" style="background-color: white;">
     <ng-container *ngIf="this.dataComponete; else Loader">
-<div class="bi-information-card-component">
-        <div class="bi-container-information-card-component">
-            <div class="bi-header-information-card">
-                <span class="title" [matTooltip]="this.dataComponete.label" >{{this.dataComponete.label}}</span>
-                <mat-icon>{{this.dataComponete.icon}}</mat-icon>
-            </div>
-            <div class="bi-body-information-card">
-                <kendo-arcgauge [transitions]="true" [color]="'#dea600'" [value]="this.dataComponete.values.percentageValue"
-                    class="bi-kendo-arcgauge">
-                    <ng-template kendoArcGaugeCenterTemplate let-value="value" let-color="color"
-                        class="container-value-percentage">
-                        <span class="value-percentage">{{ value }}%</span>
-                    </ng-template>
-                </kendo-arcgauge>
-                <span class="value">{{this.dataComponete.values.value}}</span>
+        <div class="flex items-center justify-center h-screen bi-information-card-component" [style.height]="dataComponete.height" >
+            <div class="flex items-center justify-center h-screen bi-container-information-card-component" [style.height]="dataComponete.height">
+                <div class="bi-header-information-card">
+                    <span class="title" [matTooltip]="this.dataComponete.label">{{this.dataComponete.label}}</span>
+                    <mat-icon>{{this.dataComponete.icon}}</mat-icon>
+                </div>
+                <div class="bi-body-information-card">
+                    <kendo-arcgauge [transitions]="true" [color]="'#dea600'"
+                        [value]="this.dataComponete.values.percentageValue" class="bi-kendo-arcgauge">
+                        <ng-template kendoArcGaugeCenterTemplate let-value="value" let-color="color"
+                            class="container-value-percentage">
+                            <span class="value-percentage">{{ value }}%</span>
+                        </ng-template>
+                    </kendo-arcgauge>
+                    <span class="value">{{this.dataComponete.values.value}}</span>
+                </div>
             </div>
         </div>
-    </div>
     </ng-container>
 </div>
 <ng-template #Loader>

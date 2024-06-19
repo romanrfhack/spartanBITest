@@ -39,7 +39,7 @@ export class BarComponent {
       this.componente.values.data[this.componente.values.data.length - 1].valueColor = this.ESTILO_GRAFICAS.maxValueColor
     }
 
-    console.log(this.componente)
+    console.log("this.componente: ",this.componente)
   }
 
   ngAfterViewInit(): void {

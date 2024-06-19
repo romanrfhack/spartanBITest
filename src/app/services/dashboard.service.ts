@@ -6,6 +6,8 @@ import { BehaviorSubject, Observable, catchError, map, tap, throwError } from 'r
 import { environment } from '../environments/environment';
 import { SeccionesData } from '../models/bi';
 import { SeccionesDataModel } from '../models/seccion.data';
+import { DashboardPermissionsResponse, SpartanDashboardsResponse } from '../models/dashboard.data';
+import { SpartanUsersResponse } from '../models/spartanUserRole';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,8 @@ import { SeccionesDataModel } from '../models/seccion.data';
 export class DashboardService {
 
   metaDataGeneral$: BehaviorSubject<SeccionesDataModel> = new BehaviorSubject<SeccionesDataModel>({});
-  metaDataBody$: BehaviorSubject<SeccionesDataModel> = new BehaviorSubject<SeccionesDataModel>({});
+  metaDataBody$: BehaviorSubject<SeccionesDataModel> = new BehaviorSubject<SeccionesDataModel>({});  
+  arrayDashboard: number[] = []
 
 
   // public message$: BehaviorSubject<string> = new BehaviorSubject('');
@@ -27,12 +30,12 @@ export class DashboardService {
   ) { }
 
 
-  public getSectionDashboard(tipoVista: number): Observable<SeccionesDataModel> {
-
-    this.viewId = tipoVista ==  environment.idDashboardDefault ? this.viewId : tipoVista
+  public getSectionDashboard(idDashboard: number): Observable<SeccionesDataModel> {
+    // this.viewId = idDashboard ==  environment.idDashboardDefault ? this.viewId : idDashboard
+    this.viewId = 1
     const params = {
-      dashboardId: this.idDashboard,
-      viewId: tipoVista
+      dashboardId: idDashboard,
+      viewId: this.viewId
     }
     return this._http.get<SeccionesDataModel>(`${this.BASE_URL}Spartan_Dashboard/Spartan_DashboardConfiguration`, {
       params: new HttpParams({ fromObject: params })
@@ -43,13 +46,13 @@ export class DashboardService {
         return seccionesData
       }),catchError(this.handlerError.bind(this))
     )
-    
 
+        
     let json = 'vista-general-metadata.json'
-    if (tipoVista == 2) {
+    if (idDashboard == 2) {
       json = 'vista-por-municipio-metadata.json'
     }
-    if (tipoVista == 3) {
+    if (idDashboard == 3) {
       json = 'vista-general-metadata-unidad.json'
     }
     return this._http.get<SeccionesDataModel>(`./assets/${json}`).pipe(
@@ -84,6 +87,40 @@ export class DashboardService {
     errorMessage = error?.error?.message ? error.error.message : 'Ha ocurrido un error, intente más tarde';
     console.log(error);
     return throwError(errorMessage);
+  }
+  
+  public getSpartan_Dashboard(dashboars: string): Observable<SpartanDashboardsResponse> {    
+    const baseParams = {
+      startRowIndex: 0,
+      maximumRows: 10,
+      where: "Dashboard_Id in ("+dashboars+")"
+    }
+    return this._http.get<SpartanDashboardsResponse>(`${this.BASE_URL}Spartan_Dashboard/ListaSelAll`, {
+      params: new HttpParams({ fromObject: baseParams })
+    })
+  }
+
+  public getSpartan_UserRoleByUsername(username: string): Observable<SpartanUsersResponse> {    
+    const baseParams = {
+      startRowIndex: 0,
+      maximumRows: 10,
+      where: "Username='" + username + "'"
+    }    
+    return this._http.get<SpartanUsersResponse>(`${this.BASE_URL}Spartan_User/ListaSelAll`, {
+      params: new HttpParams({ fromObject: baseParams })
+    })
+  }
+
+  
+  public getPermissionsDashboardByRole(role: number): Observable<DashboardPermissionsResponse> {    
+    const baseParams = {
+      startRowIndex: 0,
+      maximumRows: 10,
+      where: "Allowed_Role=" + role
+    }
+    return this._http.get<DashboardPermissionsResponse>(`${this.BASE_URL}Spartan_Dashboard_Permissions/ListaSelAll`, {
+      params: new HttpParams({ fromObject: baseParams })
+    })
   }
 
 }

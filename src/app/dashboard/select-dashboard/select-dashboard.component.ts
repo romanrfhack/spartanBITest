@@ -3,22 +3,29 @@ import { ChartsModule, SeriesLabelsContentArgs } from '@progress/kendo-angular-c
 import { IntlService } from '@progress/kendo-angular-intl';
 import { take } from 'rxjs';
 import { DashboardService } from 'src/app/services/dashboard.service';
-import { BiService } from '../../services/bi.service';
+
 import { ENUM_TIPO_DE_COMPONETES } from 'src/app/shared/enums/enums';
 import { SeccionesData } from 'src/app/models/bi';
 import { SeccionModel, SeccionesDataModel } from 'src/app/models/seccion.data';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
+import { SpartanDashboard } from 'src/app/models/dashboard.data';
+import { Router } from '@angular/router';
+import { BiService } from 'src/app/services/bi.service';
+import { BlockComponent } from 'src/app/shared/ui/components/block/block.component';
 
 interface ComponenteConfig {
   [key: string]: string | number;
 }
+
 @Component({
-  selector: 'app-bi',
-  templateUrl: './bi.component.html',  
-  styleUrls: ['./bi.component.scss']
+  selector: 'app-select-dashboard',
+  templateUrl: './select-dashboard.component.html',
+  styleUrls: ['./select-dashboard.component.scss']
 })
-export class BIComponent {  
-  
-  
+export class SelectDashboardComponent {
+  @BlockUI('login-full') blockUI: NgBlockUI | undefined;
+  dashboards: SpartanDashboard[] | null = null;
+    
   componentesBody : ComponenteConfig[] = [{     
       componente1: "filter-checks-with-search",
       div1Width: 20, 
@@ -168,11 +175,14 @@ export class BIComponent {
   
   public metada:any = null
   public componentsMetadata :any = null
+  public templateBlockModalUiComponent: BlockComponent = BlockComponent;
+
   constructor(
     private intl: IntlService, 
-    private _dashboardService: DashboardService, 
+    private _dashboardService: DashboardService,     
+    private router: Router,
     private biService: BiService) {
-      console.log(`BIComponent`)
+      console.log(`app-bi - Dashboards`, this._dashboardService.arrayDashboard)
   }
 
   public labelContent(e: SeriesLabelsContentArgs): string {
@@ -193,6 +203,9 @@ export class BIComponent {
   }
 
   ngOnInit(): void {
+
+    this._getDashboards()
+
     this._dashboardService.metaDataGeneral$.subscribe((data) => {
       this.metada  = data
       this._builtComponentesBody(this.metada)
@@ -222,6 +235,32 @@ private _builtComponentesBody(metadata: SeccionesDataModel): void {
 
   public get ENUM_TIPO_DE_COMPONETES() : typeof ENUM_TIPO_DE_COMPONETES  {
     return ENUM_TIPO_DE_COMPONETES;
+  }
+
+  private _getDashboards() {
+    try {      
+      this.blockUI?.start()
+      // let dashboards igual a elementos de this._dashboardService.arrayDashboard separados por una coma
+      let dashboards = this._dashboardService.arrayDashboard.join(',')
+      console.log(`dashboards`, dashboards)
+      this._dashboardService.getSpartan_Dashboard(dashboards).pipe(take(1)).subscribe((data) => {
+        this.blockUI?.stop()
+        // this.metada = data
+        console.log(`_getDashboards - data`, data)
+        this.dashboards = data.Spartan_Dashboards;
+      }, err => {
+        this.blockUI?.stop()
+        console.log(`err`, err)
+      }) 
+    } catch (error) {
+      this.blockUI?.stop()
+       console.log(`error`)
+    }    
+  }
+
+  onCardClick(dashboardId: number): void {
+    this.router.navigate(['/dashboard/bi', dashboardId]);
+    console.log(`Navegar al dashboardId`, dashboardId)
   }
 
 }
