@@ -1,4 +1,7 @@
-<div class="flex items-center justify-center h-screen chart-container-general-bi" [style.height]="dataComponete.height" style="background-color: white;">
+<div class="flex items-center justify-center h-screen chart-container-general-bi"
+     [style.height]="dataComponete.height ? dataComponete.height : '220px'"
+     style="background-color: white;">
+
     <ng-container *ngIf="this.dataComponete; else Loader">
         <div class="flex items-center justify-center h-screen bi-information-card-component" [style.height]="dataComponete.height" >
             <div class="flex items-center justify-center h-screen bi-container-information-card-component" [style.height]="dataComponete.height">

@@ -22,8 +22,8 @@ export class LoginComponent {
     private _router:Router
     ){
     this.form = new FormGroup({
-      usuario: new FormControl('demo',Validators.required),
-      password: new FormControl('demo',Validators.required),
+      usuario: new FormControl('',Validators.required),
+      password: new FormControl('',Validators.required),
       grant_type : new FormControl('password'),
     });
   }
@@ -34,8 +34,9 @@ export class LoginComponent {
 
   onLogin(){
     this.blockUI?.start()
+    console.log("onLogin",this.form.getRawValue())
     this.authService.getAuthorization(this.form.getRawValue()).subscribe((_) => {
-      console.log(_)
+      console.log("getAuthorization",_)
       this.blockUI?.stop()
       //this._router.navigate(['/dashboard'])
       let usuario = this.form.get('usuario')?.value

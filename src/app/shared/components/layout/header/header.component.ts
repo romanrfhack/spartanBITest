@@ -72,6 +72,7 @@ export class HeaderComponent {
 
   onSearch() {
     this.blockUI.start();
+    console.log(`onSearch => this.queryParams`, this.queryParams)
     this._dashboardService.getSectionBodyDashboard(this.queryParams).pipe(take(1)).subscribe((data: SeccionesData) => {
       this.blockUI.stop()
     }, err => {
@@ -81,16 +82,25 @@ export class HeaderComponent {
   }
 
   onChangeTabGroup($event: any, filter: ComponenteModel) {
+    console.log(`onChangeTabGroup => $event`, $event)
+    console.log(`onChangeTabGroup => filter`, filter)
     this.queryParams = { ...this.queryParams, [filter.filterName]: $event.value }
+    console.log(`this.queryParams`, this.queryParams)
   }
 
   onSelectChange($event: any, filter: ComponenteModel) {
+    console.log(`onSelectChange => $event`, $event)
+    console.log(`onSelectChange => filter`, filter)
     this._checkSelectAll($event, filter)
     this.queryParams = { ...this.queryParams, [filter.filterName]: $event.value.join() }
+    console.log(`onSelectChange`, this.queryParams)
   }
 
   onCheckBoxChange($event: any, filter: any) {
+    console.log(`onCheckBoxChange => $event`, $event)
+    console.log(`onCheckBoxChange => filter`, filter)
     this.queryParams = { ...this.queryParams, [filter.filterName]: $event.checked }
+    console.log(`onCheckBoxChange`, this.queryParams)
   }
 
   onLimpiarFiltros() {

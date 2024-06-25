@@ -103,7 +103,7 @@ export class DashboardComponent implements OnInit {
       this.dashboardId = +params.get('dashboardId');
       // Aquí puedes agregar lógica para obtener los detalles del dashboard usando el ID
       console.log(`this.dashboardId`, this.dashboardId)
-      this._getDashboardData(1)
+      this._getViewByDashboardData(this.dashboardId)
     });
 
 
@@ -126,14 +126,14 @@ export class DashboardComponent implements OnInit {
 
   
 
-  
-
-  private _getDashboardData(idDashboard: number) {
+  private _getViewByDashboardData(idDashboard: number) {
     try {
       this.blockUI?.start()
-      this._dashboardService.getSectionDashboard(idDashboard).pipe(take(1)).subscribe((data) => {
-        this.blockUI?.stop()
-        this.metada = data
+      this._dashboardService.getSpartan_ViewByDashboard(idDashboard).pipe(take(1)).subscribe((data) => {
+        this.blockUI?.stop()        
+        console.log(`_getViewByDashboardData - data`, data)
+        let view = data.Spartan_Views[0]?.View_Id || 1
+        this._getDashboardData(idDashboard, view)
       }, err => {
         this.blockUI?.stop()
         console.log(`err`, err)
@@ -143,5 +143,24 @@ export class DashboardComponent implements OnInit {
        console.log(`error`)
     }    
   }
+  
+
+  private _getDashboardData(idDashboard: number, idView: number = 1) {
+    try {
+      this.blockUI?.start()
+      this._dashboardService.getSectionDashboard(idDashboard, idView).pipe(take(1)).subscribe((data) => {
+        this.blockUI?.stop()
+        this.metada = data        
+      }, err => {
+        this.blockUI?.stop()
+        console.log(`err`, err)
+      }) 
+    } catch (error) {
+      this.blockUI?.stop()
+       console.log(`error`)
+    }    
+  }
+
+
 
 }

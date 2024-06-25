@@ -1,9 +1,7 @@
 export const environment = {
     production: false,
     api: 'http://108.181.200.246/WebApispartanebi/api/',
-    authApi:'http://108.181.200.246/WebApispartanebi',
-    //api: 'http://localhost/WebApispartanebi/api/',
-    //authApi:'http://localhost/WebApispartanebi',
+    authApi:'http://108.181.200.246/WebApispartanebi',    
     version: 'api/v1',
     secretCrypto: 'TTSP4RT4N3_CRYPT0_S3CR3T',
     idDashboardDefault : 1,

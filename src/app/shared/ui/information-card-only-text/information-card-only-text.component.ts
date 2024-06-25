@@ -23,7 +23,7 @@ export class InformationCardOnlyTextComponent {
   private _setDataComponente(metadata: Componente) {
     setTimeout(() => {
       this.dataComponente = metadata
-      console.log(this.dataComponente)
+      console.log("_setDataComponente",this.dataComponente)
     }, 0)
   }
 }

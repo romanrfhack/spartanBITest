@@ -183,6 +183,9 @@ export class SelectDashboardComponent {
     private router: Router,
     private biService: BiService) {
       console.log(`app-bi - Dashboards`, this._dashboardService.arrayDashboard)
+      if(this._dashboardService?.dashboards?.length > 0){
+        this.dashboards = this._dashboardService.dashboards
+      }                  
   }
 
   public labelContent(e: SeriesLabelsContentArgs): string {
@@ -248,6 +251,7 @@ private _builtComponentesBody(metadata: SeccionesDataModel): void {
         // this.metada = data
         console.log(`_getDashboards - data`, data)
         this.dashboards = data.Spartan_Dashboards;
+        this._dashboardService.dashboards = this.dashboards
       }, err => {
         this.blockUI?.stop()
         console.log(`err`, err)
@@ -258,7 +262,7 @@ private _builtComponentesBody(metadata: SeccionesDataModel): void {
     }    
   }
 
-  onCardClick(dashboardId: number): void {
+  onCardClick(dashboardId: number): void {    
     this.router.navigate(['/dashboard/bi', dashboardId]);
     console.log(`Navegar al dashboardId`, dashboardId)
   }

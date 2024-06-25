@@ -7,6 +7,7 @@ import { BiService } from '../../services/bi.service';
 import { ENUM_TIPO_DE_COMPONETES } from 'src/app/shared/enums/enums';
 import { SeccionesData } from 'src/app/models/bi';
 import { SeccionModel, SeccionesDataModel } from 'src/app/models/seccion.data';
+import { ActivatedRoute } from '@angular/router';
 
 interface ComponenteConfig {
   [key: string]: string | number;
@@ -170,9 +171,14 @@ export class BIComponent {
   public componentsMetadata :any = null
   constructor(
     private intl: IntlService, 
+    private route: ActivatedRoute,
     private _dashboardService: DashboardService, 
     private biService: BiService) {
       console.log(`BIComponent`)
+      this.route.paramMap.subscribe(params => {
+        let tablero = params.get('vin');
+        console.log("tablero:", tablero); // Output the vin value
+      });
   }
 
   public labelContent(e: SeriesLabelsContentArgs): string {

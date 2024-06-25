@@ -12,7 +12,7 @@
     <!-- SIDEBAR & PAGE CONTENT -->
     <div class="card-container" *ngIf="dashboards">
       <div class="card" *ngFor="let dashboard of dashboards" (click)="onCardClick(dashboard.Dashboard_Id)">
-        <img src="../../../assets/imgs/dashboard_icon.svg">
+        <img src="./assets/imgs/dashboard_icon.svg">
         <h3>{{ dashboard.Title }}</h3>
         <p>{{ dashboard.Description }}</p>
         <!-- <p><strong>Type:</strong> {{ dashboard.Dashboard_Type_Spartan_Dashboard_Type.Description }}</p>
