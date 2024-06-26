@@ -24,8 +24,8 @@ export class PieComponent implements AfterViewInit {
   }
   constructor(){}
   
-  public labelContent(e: SeriesLabelsContentArgs): string {
-    return e.category;
+  public labelContent(e: SeriesLabelsContentArgs): string {    
+    return `${e.category}: ${e.value}`;
   }
 
   private _setDataComponente(metadata : Componente){
@@ -45,5 +45,6 @@ export class PieComponent implements AfterViewInit {
       this.eventImage.emit(dataURI)
     });
   }
+
 
 }
