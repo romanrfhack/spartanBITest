@@ -26,7 +26,7 @@ export class InformationCardWithChartComponent {
     setTimeout(() => {
         this.dataComponete = metadata
 
-        console.log(this.dataComponete)
+        // console.log(this.dataComponete)
     }, 0)
   }
 }

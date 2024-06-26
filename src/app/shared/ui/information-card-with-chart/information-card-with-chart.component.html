@@ -1,10 +1,11 @@
 <div class="flex items-center justify-center h-screen chart-container-general-bi"
      [style.height]="dataComponete?.height ? dataComponete?.height : '220px'"
+     [style.width]="dataComponete?.width ? dataComponete?.width : '220px'"
      style="background-color: white;">
 
-    <ng-container *ngIf="dataComponete; else Loader">
-        <div class="flex items-center justify-center h-screen bi-information-card-component" [style.height]="dataComponete?.height" >
-            <div class="flex items-center justify-center h-screen bi-container-information-card-component" [style.height]="dataComponete?.height">
+    <ng-container *ngIf="dataComponete; else Loader"> 
+        <div class="flex items-center justify-center h-screen bi-information-card-component" [style.width]="dataComponete?.width" [style.height]="dataComponete?.height" >
+            <div class="flex items-center justify-center h-screen bi-container-information-card-component" [style.width]="dataComponete?.width" [style.height]="dataComponete?.height">
                 <div class="bi-header-information-card">
                     <span class="title" [matTooltip]="dataComponete?.label">{{dataComponete?.label}}</span>
                     <mat-icon>{{dataComponete?.icon}}</mat-icon>

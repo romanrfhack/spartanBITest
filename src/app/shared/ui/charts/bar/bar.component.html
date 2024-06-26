@@ -1,25 +1,25 @@
 <div class="chart-container-general-bi" [hidden]="isToExport">
   <ng-container *ngIf="this.componente; else Loader">
-    <kendo-chart class="chart-container-kendo-bi" #chartBarExport>
-
+    <kendo-chart class="chart-container-kendo-bi" #chartBarExport
+      [style.height]="componente?.height ? componente?.height : '220px'"
+      [style.width]="componente?.width ? componente?.width : '220px'" style="background-color: white; box-sizing: border-box;">
+      <span class="title">{{this.componente.label}}</span>
       <kendo-chart-category-axis>
-        <kendo-chart-category-axis-item [categories]="componente.values?.categories" [labels]="{font:ESTILO_GRAFICAS.font, color:ESTILO_GRAFICAS.secondaryColor}" >
+        <kendo-chart-category-axis-item [categories]="componente.values?.categories"
+          [labels]="{font:ESTILO_GRAFICAS.font, color:ESTILO_GRAFICAS.secondaryColor}">
         </kendo-chart-category-axis-item>
       </kendo-chart-category-axis>
 
       <kendo-chart-value-axis>
         <kendo-chart-value-axis-item [labels]="valueAxisLabels">
         </kendo-chart-value-axis-item>
-    </kendo-chart-value-axis>
-      
+      </kendo-chart-value-axis>
+
       <kendo-chart-series>
-        <kendo-chart-series-item 
-        type="bar" 
-        [labels]="{visible:true, font:ESTILO_GRAFICAS.font, color:ESTILO_GRAFICAS.primaryColor}" [gap]="10" 
-        [colorField]="'valueColor'"
-        [data]="componente.values?.data" 
-        [visual]="radiusEnd">
-      </kendo-chart-series-item>
+        <kendo-chart-series-item type="bar"
+          [labels]="{visible:true, font:ESTILO_GRAFICAS.font, color:ESTILO_GRAFICAS.primaryColor}" [gap]="10"
+          [colorField]="'valueColor'" [data]="componente.values?.data" [visual]="radiusEnd">
+        </kendo-chart-series-item>
       </kendo-chart-series>
     </kendo-chart>
   </ng-container>

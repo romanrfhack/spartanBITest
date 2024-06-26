@@ -57,9 +57,13 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.form.valueChanges.subscribe({
       next: (res) => {
-        console.log(res);
+        // console.log(res);
       },
     });
+    //esperar 3 segundos y ejecutar      this.onSearch()
+    setTimeout(() => {
+      this.onSearch();
+    }, 2000);
   }
 
   private _builtSeccionVista(metadata: SeccionesDataModel) {
@@ -128,8 +132,8 @@ export class HeaderComponent implements OnInit {
   }
 
   onSearch() {
-    const obj: object = this.form.value;
-
+    console.log(`filtrando...`);
+    const obj: object = this.form.value;    
     for (let key in obj) {
       if (obj.hasOwnProperty(key)) {
         // Verificamos si la propiedad es un arreglo
@@ -139,9 +143,8 @@ export class HeaderComponent implements OnInit {
         }
       }
     }
-    
-    this.blockUI.start();
-    
+        
+    this.blockUI.start();    
     this._dashboardService
       .getSectionBodyDashboard(JSON.stringify(this.form.value))
       .pipe(take(1))

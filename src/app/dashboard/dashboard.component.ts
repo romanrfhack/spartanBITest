@@ -131,8 +131,9 @@ export class DashboardComponent implements OnInit {
       this.blockUI?.start()
       this._dashboardService.getSpartan_ViewByDashboard(idDashboard).pipe(take(1)).subscribe((data) => {
         this.blockUI?.stop()        
-        console.log(`_getViewByDashboardData - data`, data)
+        // console.log(`_getViewByDashboardData - data`, data)
         let view = data.Spartan_Views[0]?.View_Id || 1
+        this._dashboardService.viewId = view
         this._getDashboardData(idDashboard, view)
       }, err => {
         this.blockUI?.stop()

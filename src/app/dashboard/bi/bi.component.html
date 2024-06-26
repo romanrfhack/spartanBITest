@@ -25,9 +25,9 @@
 <div *ngIf="this.componentsMetadata">
   <div class="flex-container">
     
-    <div *ngFor="let component of this.componentsMetadata.items" class="flex-item-bi" [style.width]="component?.width" style="background-color: aqua;"
+    <div *ngFor="let component of this.componentsMetadata.items" class="my-5 flex-item-bi" [style.width]="component?.width" style="background-color: white;"
       [style.height]="component?.height">
-      <ng-container [ngSwitch]="component?.nombreComponente">
+      <ng-container [ngSwitch]="component?.nombreComponente" style="background-color: white;">
         <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.INFORMATION_CARD_SIMPLE" [style.width]="component?.width" [style.height]="component?.height">
           <app-information-card-only-text [style.width]="component?.width" [style.height]="component?.height" [metadataComponente]="component"></app-information-card-only-text>
         </div>
@@ -39,10 +39,10 @@
         </div>
         <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.BAR_CHART" [style.width]="component?.width" [style.height]="component?.height">
           <app-spartan-bi-card [componente]="component" [style.width]="component?.width" [style.height]="component?.height">
-            <app-bar [metadataComponente]="component" [style.width]="component?.width" [style.height]="component?.height"></app-bar>
+            <app-bar [metadataComponente]="component" [style.width]="component?.width" [style.height]="component?.height" style="background-color: red;"></app-bar>
           </app-spartan-bi-card>
         </div>
-        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.LINE_CHART" [style.width]="component?.width" [style.height]="component?.height">
+        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.LINE_CHART"  [style.width]="component?.width" [style.height]="component?.height">
           <app-spartan-bi-card [componente]="component" [style.width]="component?.width" [style.height]="component?.height">
             <app-line [metadataComponente]="component" [style.width]="component?.width" [style.height]="component?.height"></app-line>
           </app-spartan-bi-card>

@@ -24,15 +24,15 @@ export class DashboardService {
   // public message$: BehaviorSubject<string> = new BehaviorSubject('');
   // public anyMessage$: BehaviorSubject<any> = new BehaviorSubject({});
   BASE_URL:string = "";
-  readonly idDashboard = environment.idDashboardDefault
-  private viewId = environment.idDashboardDefault
+  idDashboard:number = environment.idDashboardDefault
+  viewId:number = environment.idDashboardDefault
   constructor(
     private _http: HttpClient,
     private configService: ConfigService,
     private _apiTranslatorService: ApiTranslatorService
     ) {    
       this.configService.getConfig().subscribe((config) => {
-        this.BASE_URL = config.api        
+        this.BASE_URL = config.api            
       }
     )
   }  
@@ -72,16 +72,12 @@ export class DashboardService {
   }
 
   public getSectionBodyDashboard(queryParams: any): Observable<SeccionesDataModel> {
-
-    JSON.stringify({ ...queryParams })
     const baseParams = {
-      dashboardId: this.idDashboard,
+      dashboardId: this.idDashboard,  
       viewId: this.viewId,
-      params: JSON.stringify({ ...queryParams })
+      spParams: queryParams
     }    
-    return this._http.get<SeccionesDataModel>(`${this.BASE_URL}/Spartan_Dashboard/Spartan_DashboardFilter`, {
-      params: new HttpParams({ fromObject: baseParams })
-    }).pipe(
+    return this._http.post<SeccionesDataModel>(`${this.BASE_URL}/Spartan_Dashboard/Spartan_DashboardFilter`, baseParams).pipe(
       tap((data) => {
         const seccionesData = new SeccionesDataModel(data)
         this.metaDataBody$.next(seccionesData)

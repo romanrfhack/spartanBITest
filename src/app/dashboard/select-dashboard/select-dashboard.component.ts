@@ -262,7 +262,8 @@ private _builtComponentesBody(metadata: SeccionesDataModel): void {
     }    
   }
 
-  onCardClick(dashboardId: number): void {    
+  onCardClick(dashboardId: number): void {   
+    this._dashboardService.idDashboard = dashboardId;
     this.router.navigate(['/dashboard/bi', dashboardId]);
     console.log(`Navegar al dashboardId`, dashboardId)
   }

@@ -1,5 +1,8 @@
 <div class="spartan-bi-card main-container-chart" [ngClass]="{'fullView':isFullView}">
-  <div class="header-container-chart flex justify-between">
+  <div class="header-container-chart flex justify-between"
+  [style.height]="componente?.height ? componente?.height : '220px'"
+  [style.width]="componente?.width ? componente?.width : '220px'"
+  style="background-color: white;">
     <div class="mr-1 gap-1">
       <span class="title">{{this.componente.label}}</span>
     </div>

@@ -1,7 +1,10 @@
-<div class="chart-container-general-bi">
+<div class="chart-container-general-bi"
+[style.height]="dataComponete?.height ? dataComponete?.height : '220px'"
+[style.width]="dataComponete?.width ? dataComponete?.width : '220px'"
+style="background-color: white;">
     <ng-container *ngIf="this.dataComponete && this.chartOptions; else Loader">
-        <div class="bi-information-card-component">
-            <div class="bi-container-information-card-component">
+        <div class="bi-information-card-component" [style.width]="dataComponete?.width" [style.height]="dataComponete?.height" >
+            <div class="bi-container-information-card-component" [style.width]="dataComponete?.width" [style.height]="dataComponete?.height" >
                 <div class="bi-header-information-card">
                     <span class="title">{{this.dataComponete.label}}</span>
                     <mat-icon>{{this.dataComponete.icon}}</mat-icon>
@@ -16,7 +19,7 @@
                     </apx-chart>
                     <div class="bi-body-legend-values">
                         <ng-container *ngFor="let item of this.dataComponete.values.series ; let i = index" >
-                            <span  [ngStyle]="{'color':this.dataComponete.values.colorSeries[i] ?? colorSeries[i]}">{{this.dataComponete.values.series[i]}}%</span>
+                            <span  [ngStyle]="{'color':this.dataComponete.values.colorSeries[i] ?? colorSeries[i]}">{{this.dataComponete.values.seriesPercentage[i]}}%</span>
                     </ng-container>
                     </div>
 

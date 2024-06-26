@@ -177,7 +177,7 @@ export class BIComponent {
       console.log(`BIComponent`)
       this.route.paramMap.subscribe(params => {
         let tablero = params.get('vin');
-        console.log("tablero:", tablero); // Output the vin value
+        console.log("tablero:", tablero); // Output the vin value        
       });
   }
 

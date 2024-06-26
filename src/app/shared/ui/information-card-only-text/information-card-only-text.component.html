@@ -1,7 +1,10 @@
-<div class="chart-container-general-bi">
+<div class="chart-container-general-bi"
+[style.height]="dataComponente?.height ? dataComponente?.height : '220px'"
+[style.width]="dataComponente?.width ? dataComponente?.width : '220px'"
+style="background-color: white;">
     <ng-container *ngIf="this.dataComponente; else Loader">
-    <div class="bi-information-card-component">
-        <div class="bi-container-information-card-component">
+    <div class="bi-information-card-component" [style.width]="dataComponente?.width" [style.height]="dataComponente?.height" >
+        <div class="bi-container-information-card-component" [style.width]="dataComponente?.width" [style.height]="dataComponente?.height" >
             <div class="bi-header-information-card">
                 <span>{{this.dataComponente.label}}</span>
                 <mat-icon>{{this.dataComponente.icon}}</mat-icon>
