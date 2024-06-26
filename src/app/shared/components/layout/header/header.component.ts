@@ -135,7 +135,7 @@ export class HeaderComponent implements OnInit {
         // Verificamos si la propiedad es un arreglo
         if (Array.isArray(obj[key])) {
           // Convertimos el arreglo a un string, separando los elementos con comas
-          obj[key] = obj[key].join(',');
+          obj[key] = obj[key].join('|');
         }
       }
     }
