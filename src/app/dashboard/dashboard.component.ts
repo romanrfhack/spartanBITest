@@ -151,6 +151,8 @@ export class DashboardComponent implements OnInit {
       this._dashboardService.getSectionDashboard(idDashboard, idView).pipe(take(1)).subscribe((data) => {
         this.blockUI?.stop()
         this.metada = data        
+
+        console.log(this.metada);
       }, err => {
         this.blockUI?.stop()
         console.log(`err`, err)

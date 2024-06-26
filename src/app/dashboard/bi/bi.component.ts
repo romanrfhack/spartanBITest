@@ -214,6 +214,10 @@ private _builtComponentesBody(metadata: SeccionesDataModel): void {
       const _meta = metadata.secciones?.find((m: SeccionModel) => m.id == 3 || m.tipo == "body")
       if (_meta) {
         this.componentsMetadata = _meta
+        console.log(
+          `+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        +++++++++++++++++++++++++++++++++++++++++++++++++++++++`
+        );
         console.log(`_builtComponentesBody`, this.componentsMetadata)
       }
   }

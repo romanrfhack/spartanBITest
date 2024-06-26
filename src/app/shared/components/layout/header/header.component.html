@@ -1,12 +1,14 @@
 <div class="container-main-header">
     <ng-container *ngIf="this.seccion; else elseInstance">
-        <div (click)="misDashboards()" class="icon-container px-2 py-2 rounded-full bg-[#323332] hover:bg-[#dea600] hover:cursor-pointer w-10 h-10 relative">
+        <div (click)="misDashboards()"
+            class="icon-container px-2 py-2 rounded-full bg-[#323332] hover:bg-[#dea600] hover:cursor-pointer w-10 h-10 relative">
             <img src="./assets/imgs/ico_back-bco.svg" alt="Regresar a mis dashboards" class="default-icon">
             <img src="./assets/imgs/ico_back-black.svg" alt="Regresar a mis dashboards" class="hover-icon">
-            <div class="tooltip hidden bg-[#323332] text-[#fff] px-2 w-[13rem] rounded-lg mt-11 absolute top-full left-1/2 transform -translate-x-1/2">
-              Regresar a mis dashboards
+            <div
+                class="tooltip hidden bg-[#323332] text-[#fff] px-2 w-[13rem] rounded-lg mt-11 absolute top-full left-1/2 transform -translate-x-1/2">
+                Regresar a mis dashboards
             </div>
-          </div>
+        </div>
         <app-logo-company></app-logo-company>
         <!-- <div class="header-logo">
             <div class="container-image">
@@ -35,11 +37,14 @@
         <div class="header-notifications">
             <div class="container-notifications" [hidden]="true">
                 <div class="container-change-theme">
-                    <mat-icon [ngClass]="{'active' :this.themeActual == 'dark' }" class="color-icon-notification"> dark_mode </mat-icon>
-                    <mat-slide-toggle [color]="'primary'" [checked]="this.themeActual == 'default'" (change)="onChangeTheme()" ></mat-slide-toggle>
-                    <mat-icon [ngClass]="{'active' :this.themeActual == 'default' }" class="material-symbols-outlined"> light_mode </mat-icon>
+                    <mat-icon [ngClass]="{'active' :this.themeActual == 'dark' }" class="color-icon-notification">
+                        dark_mode </mat-icon>
+                    <mat-slide-toggle [color]="'primary'" [checked]="this.themeActual == 'default'"
+                        (change)="onChangeTheme()"></mat-slide-toggle>
+                    <mat-icon [ngClass]="{'active' :this.themeActual == 'default' }" class="material-symbols-outlined">
+                        light_mode </mat-icon>
                 </div>
-                
+
                 <!-- <button mat-button>
                     <mat-icon class="color-icon-notification">notifications</mat-icon>
                 </button>
@@ -53,80 +58,79 @@
         <!-- <app-spinner></app-spinner> -->
     </ng-template>
 </div>
-
-<div class="container-main-filters">
-    <div class="container-filters" *ngIf="this.seccionFilters; else elseInstance">
-        <ng-container *ngFor="let filter of seccionFilters.items">
-            <ng-container [ngSwitch]="filter.nombreComponente">
-                <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.BUTTON_GROUP" class="container-buttons-group">
-                    <span class="titleFilter">{{filter.label}}</span>
-                    <mat-button-toggle-group (change)="onChangeTabGroup($event, filter)" name="fontStyle"
-                        class="spartan-bi-button-group" aria-label="Font Style">
-                        <mat-button-toggle *ngFor="let item of filter.values" value="{{item.value}}">
-                            <mat-icon *ngIf="item.icon && item.icon !=''">{{item.icon}}</mat-icon>
-                            {{item.label}}
-                        </mat-button-toggle>
-                    </mat-button-toggle-group>
-                </div>
-
-                <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.SELECT" class="container-buttons-select">
-                    <span class="titleFilter">{{filter.label}}</span>
-                    <mat-form-field class="spartan-bi-select">
-                        <mat-select [value]="filter.values | GetItemOfArray :'selected' " 
-                            (selectionChange)="onSelectChange($event,filter)">
-                            <mat-option *ngFor="let item of filter.values" [value]="item.value"
-                                [disabled]="item.disabled ?? false">
+<form [formGroup]="form">
+    <div class="container-main-filters">
+        <div class="container-filters" *ngIf="this.seccionFilters; else elseInstance">
+            <ng-container *ngFor="let filter of seccionFilters.items">
+                <ng-container [ngSwitch]="filter.nombreComponente">
+                    <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.BUTTON_GROUP" class="container-buttons-group">
+                        <span class="titleFilter">{{filter.label}}</span>
+                        <mat-button-toggle-group name="fontStyle" class="spartan-bi-button-group"
+                            [formControlName]="filter.filterName" aria-label="Font Style">
+                            <mat-button-toggle *ngFor="let item of filter.values" value="{{item.value}}">
+                                <mat-icon *ngIf="item.icon && item.icon !=''">{{item.icon}}</mat-icon>
                                 {{item.label}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-
-            
-                <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.MULTI_SELECT" class="container-buttons-select">
-                    <span class="titleFilter">{{filter.label}}</span>
-                    <mat-form-field class="spartan-bi-select multi">
-                        <mat-select [value]="filter.values | getItemsOfArray :'selected' "
-                         multiple
-                         (selectionChange)="onSelectChange($event,filter)">
-                         <mat-option *ngFor="let item of filter.values" [value]="item.value"
-                                [disabled]="item.disabled ?? false">
-                                {{item.label}}
-                         </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-
-            
-                <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.CHECK_SHADOW">
-                    <div class="container-check">
-                        <mat-checkbox (change)="onCheckBoxChange($event,filter)"
-                            class="spartan-bi-checkbox spartan-bi-checkbox__transparent">{{filter.label}}</mat-checkbox>
+                            </mat-button-toggle>
+                        </mat-button-toggle-group>
                     </div>
-                </div>
 
-            
-                <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.BUTTON">
-                    <button class="spartan-bi-button" (click)="onSearch()">{{filter.label}}
-                        <mat-icon>{{filter.icon}}</mat-icon> </button>
-                </div>
+                    <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.SELECT" class="container-buttons-select">
+                        <span class="titleFilter">{{filter.label}}</span>
+                        <mat-form-field class="spartan-bi-select">
+                            <mat-select [value]="filter.values | GetItemOfArray :'selected' "
+                                [formControlName]="filter.filterName">
+                                <mat-option *ngFor="let item of filter.values" [value]="item.value"
+                                    [disabled]="item.disabled ?? false">
+                                    {{item.label}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+
+                    <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.MULTI_SELECT" class="container-buttons-select">
+                        <span class="titleFilter">{{filter.label}}</span>
+                        <mat-form-field class="spartan-bi-select multi">
+                            <mat-select [value]="filter.values | getItemsOfArray :'selected' " multiple
+                                [formControlName]="filter.filterName">
+                                <mat-option *ngFor="let item of filter.values" [value]="item.value"
+                                    [disabled]="item.disabled ?? false">
+                                    {{item.label}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+
+                    <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.CHECK_SHADOW">
+                        <div class="container-check">
+                            <mat-checkbox class="spartan-bi-checkbox spartan-bi-checkbox__transparent"
+                                [formControlName]="filter.filterName">{{filter.label}}</mat-checkbox>
+                        </div>
+                    </div>
+
+
+                    <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.BUTTON">
+                        <button class="spartan-bi-button" (click)="onSearch()">{{filter.label}}
+                            <mat-icon>{{filter.icon}}</mat-icon> </button>
+                    </div>
+                </ng-container>
             </ng-container>
-        </ng-container>
-        <div>
-            <button class="btn-circle" (click)="onSearch()" [matTooltip]="'Aplicar selección'">
-                <span class="material-symbols-outlined">
-                    filter_alt
+            <div>
+                <button class="btn-circle" (click)="onSearch()" [matTooltip]="'Aplicar selección'">
+                    <span class="material-symbols-outlined">
+                        filter_alt
                     </span>
-            </button>
-        </div>
-        <div>
-            <button class="btn-circle" (click)="onLimpiarFiltros()" [matTooltip]="'Limpiar selección'" >
-                <span class="material-symbols-outlined">
-                    filter_alt_off
+                </button>
+            </div>
+            <div>
+                <button class="btn-circle" (click)="onLimpiarFiltros()" [matTooltip]="'Limpiar selección'">
+                    <span class="material-symbols-outlined">
+                        filter_alt_off
                     </span>
-            </button>
-        </div>
-        <!-- <section>
+                </button>
+            </div>
+            <!-- <section>
             <mat-form-field>
                 <mat-label>Ingresa un rango de fechas</mat-label>
                 <mat-date-range-input [rangePicker]="picker">
@@ -137,5 +141,6 @@
                 <mat-date-range-picker #picker></mat-date-range-picker>
               </mat-form-field>
         </section> -->
+        </div>
     </div>
-</div>
+</form>

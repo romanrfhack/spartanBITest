@@ -21,6 +21,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, NativeDateAdapter} from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     FooterComponent,
@@ -33,6 +34,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   imports: [
     CommonModule,
     RouterModule,
+    ReactiveFormsModule,
     MatButtonToggleModule,
     MatSelectModule,
     MatCheckboxModule,
