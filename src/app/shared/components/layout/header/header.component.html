@@ -88,8 +88,7 @@
                     </div> -->
 
                     <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.SELECT" class="container-buttons-select">
-                        <span class="titleFilter">{{filter.label}}</span>
-                        <span>filtro select</span>
+                        <span class="titleFilter">{{filter.label}}</span>                        
                         <mat-form-field class="spartan-bi-select">
                             <mat-select [formControlName]="filter.filterName">
                                 <mat-option *ngFor="let item of filter.values" [value]="item.value"
@@ -99,8 +98,6 @@
                             </mat-select>
                         </mat-form-field>
                     </div>
-                    
-
 
                     <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.MULTI_SELECT" class="container-buttons-select">
                         <span class="titleFilter">{{filter.label}}</span>
