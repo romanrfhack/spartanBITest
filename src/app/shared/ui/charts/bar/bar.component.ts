@@ -31,7 +31,7 @@ export class BarComponent {
   private _setDataCompoente(metadata: ComponenteModel) {
     this.componente = metadata
     if (!this.isToExport) {
-      this.componente.values.data.sort((a, b) => a - b)
+      //this.componente.values.data.sort((a, b) => a - b)
       this.componente.values.data = this.componente.values.data.map((item, index) => {
         return { value: Number(item), valueColor: this.ESTILO_GRAFICAS.primaryColor, category: this.componente.values.categories[index] }
       })
