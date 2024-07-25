@@ -1,10 +1,13 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { ChartComponent, SeriesVisualArgs, ValueAxisLabels } from '@progress/kendo-angular-charts';
 import { Element, Circle, Path, Group, geometry } from '@progress/kendo-drawing';
 import { Componente } from 'src/app/models/bi';
 import { ComponenteModel } from 'src/app/models/seccion.data';
 import { CONSTANTS } from 'src/app/shared/constants/constants';
 import { ENUM_TIPO_DE_COMPONETES } from 'src/app/shared/enums/enums';
+import { saveAs } from "@progress/kendo-file-saver";
+import { ExportService } from 'src/app/shared/services/ExportService ';
+import { Subscription } from 'rxjs';
 const { transform, Circle: GeomCircle } = geometry;
 
 @Component({
@@ -12,10 +15,12 @@ const { transform, Circle: GeomCircle } = geometry;
   templateUrl: './bar.component.html',
   styleUrls: ['./bar.component.scss']
 })
-export class BarComponent {
+export class BarComponent implements OnInit, OnDestroy{
 
-  @ViewChild("chartBarExport")
-  private chart: ChartComponent;
+  private exportSubscription: Subscription;
+
+  
+  @ViewChild("chartBarExport") private chart: ChartComponent;
   @Output() eventImage = new EventEmitter<any>()
   @Input() isToExport = false
   @Input() set metadataComponente(metadata: any) {
@@ -24,9 +29,20 @@ export class BarComponent {
     }
     this._setDataCompoente(metadata)
   }
+
+  //@ViewChild('chartBarExport') chart: ChartComponent;
+  @Output() exportImage = new EventEmitter<void>();
+  @Output() exportDatos = new EventEmitter<void>();
+
   public readonly ESTILO_GRAFICAS = CONSTANTS.ESTILO_GRAFICAS
   public componente: ComponenteModel;
-  constructor() { }
+  constructor(private exportService: ExportService) { }
+
+  ngOnInit() {
+    this.exportSubscription = this.exportService.exportImageObservable$.subscribe(() => {
+      this.onExportImage();
+    });
+  }
 
   private _setDataCompoente(metadata: ComponenteModel) {
     this.componente = metadata
@@ -42,16 +58,26 @@ export class BarComponent {
     console.log("this.componente: ",this.componente)
   }
 
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.exportChart()
-    }, 1000)
+  public onExportImage(): void {
+    console.log('exportImage-bar hijo', this.componente.nombreComponente)
+    this.chart.exportImage().then((dataURI) => {
+      saveAs(dataURI, "chart.png");
+    });
   }
 
-  public exportChart(): void {
-    this.chart.exportImage().then((dataURI) => {
-      this.eventImage.emit(dataURI)
-    });
+  public onExportDatos(): void {
+    console.log('exportDatos-bar hijo')
+    const data = this.componente.values.data;
+    const csvData = this.convertToCSV(data);
+    const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
+    saveAs(blob, 'chart-data.csv');
+  }
+
+  private convertToCSV(objArray: any[]): string {
+    const array = [Object.keys(objArray[0])].concat(objArray);
+    return array.map(it => {
+      return Object.values(it).toString();
+    }).join('\n');
   }
 
   public radiusEnd = (e: SeriesVisualArgs) => {
@@ -103,5 +129,17 @@ export class BarComponent {
   public valueAxisLabels: ValueAxisLabels = {
     font: 'bold 16px Bebas Neue, sans-serif',
   };
+
+  saludar() {
+    console.log('Hola desde el componente hijo!');
+  }
+
+  public executeMethodHIJO() {    
+    console.log('Método del componente hijo ejecutado');
+  }
+
+  ngOnDestroy() {
+    this.exportSubscription.unsubscribe();
+  }
 
 }

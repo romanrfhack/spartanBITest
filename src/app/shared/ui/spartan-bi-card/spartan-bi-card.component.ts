@@ -1,6 +1,6 @@
 import { ChartComponent } from '@progress/kendo-angular-charts';
 import { PdfGeneratorServiceService } from './../../services/pdf/pdf-generator-service.service';
-import { AfterViewInit, Component, ContentChild, ElementRef, Input, QueryList, Renderer2, TemplateRef, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, ElementRef, Input, OnInit, QueryList, Renderer2, TemplateRef, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
 import { Componente } from 'src/app/models/bi';
 import { ExportChartComponent } from '../components/export-chart/export-chart.component';
 import { firstValueFrom, lastValueFrom } from 'rxjs';
@@ -10,18 +10,23 @@ import { BarComponent } from '../charts/bar/bar.component';
 import { LineComponent } from '../charts/line/line.component';
 import { PieComponent } from '../charts/pie/pie.component';
 import { MatIconRegistry } from '@angular/material/icon';
-import printJS from 'print-js'
-import { head } from 'lodash';
+import { saveAs } from "@progress/kendo-file-saver";
+// import printJS from 'print-js'
+import { ExportService } from '../../services/ExportService ';
 @Component({
   selector: 'app-spartan-bi-card',
   templateUrl: './spartan-bi-card.component.html',
   styleUrls: ['./spartan-bi-card.component.scss']
 })
-export class SpartanBiCardComponent implements AfterViewInit {
+export class SpartanBiCardComponent implements AfterViewInit, OnInit {
   @ViewChildren(ChartComponent) charts: QueryList<ChartComponent>;
-  @ViewChild('kendo-chart') public chart: ChartComponent;
+  @ViewChild('kendo-chart') public chart: ChartComponent;      
+  @ContentChild(BarComponent) appBarComponent: BarComponent;
+  @ContentChild(LineComponent) appLineComponent: LineComponent;
+  //LineComponent
 
   @Input() componente: Componente
+  
 
   isFullView: boolean = false
   constructor(
@@ -29,21 +34,25 @@ export class SpartanBiCardComponent implements AfterViewInit {
     private renderer: Renderer2,
     private elementRef: ElementRef,
     private viewRef: ViewContainerRef,
-    private _matIconRegistery:MatIconRegistry
-  ) {
+    private _matIconRegistery:MatIconRegistry,
+    private exportService: ExportService
+  ) {  }
 
-  }
-
-  private addIcons(){
+  ngOnInit(): void {
+    console.log('componente barComponent', this.appBarComponent)
   }
 
   getElementById(id: string): HTMLElement {
     return this.elementRef.nativeElement.querySelector(`#${id}`);
   }
 
-  ngAfterViewInit(): void {
+  ngAfterViewInit(): void {    
+    if (this.appBarComponent) {
+      console.log("BarComponent inicializado correctamente");
+    } else {
+      console.error("BarComponent no se pudo inicializar");
+    }    
   }
-
 
   onFullView() {
     this.isFullView = !this.isFullView
@@ -55,28 +64,44 @@ export class SpartanBiCardComponent implements AfterViewInit {
     }
   }
 
+  onExportImage() {
+    console.log('exportImage-padre')        
+    if (this.componente.nombreComponente == ENUM_TIPO_DE_COMPONETES.BAR_CHART) {
+      console.log("BarComponent inicializado correctamente");
+      this.appBarComponent.onExportImage();
+    }
+
+    if (this.componente.nombreComponente == ENUM_TIPO_DE_COMPONETES.LINE_CHART) {
+      this.appLineComponent.onExportImage();
+      console.log("LineComponent inicializado correctamente");
+    }    
+  }
+
+  onExportDatos() {
+
+    if (this.componente.nombreComponente == ENUM_TIPO_DE_COMPONETES.BAR_CHART) {
+      console.log("BarComponent inicializado correctamente");
+      this.appBarComponent.onExportDatos();
+    }
+
+    if (this.componente.nombreComponente == ENUM_TIPO_DE_COMPONETES.LINE_CHART) {
+      this.appLineComponent.onExportDatos();
+      console.log("LineComponent inicializado correctamente");
+    }
+    
+  }
+  
+
   async onExport() {
     try {
       const compRef = this._getComponentChartDinamically()
       compRef.setInput('isToExport', true)
       compRef.setInput('metadataComponente', this.componente)
       const image = await firstValueFrom(compRef.instance.eventImage)
-      printJS({printable: image, type: 'image' ,header:'' , documentTitle:'',})
-      // console.log(image)
-      // if (image) {
-      //   var docDefinition = {
-      //     content: [
-      //       'test to export chart',
-      //       {
-      //         image: image,
-      //         fit: [300, 300],
-      //       }
-      //     ]
-      //   };
-
-      //   this.PdfGeneratorServiceService.generatePDF(docDefinition, "pdftest")
-      //   compRef.destroy()
-      // }
+      // printJS({printable: image, type: 'image' ,header:'' , documentTitle:'',})
+      this.chart.exportImage().then((dataURI) => {
+        saveAs(dataURI, "chart.png");
+      });      
     } catch (error) {
       console.log(error)
       throw error
@@ -103,4 +128,16 @@ export class SpartanBiCardComponent implements AfterViewInit {
         break;
     }
   }
+
+  llamarMetodoHijo() {
+    console.log("SpartanBiCardComponent Padre");
+    if (this.appBarComponent) {
+      console.log("appBarComponent Padre");
+      this.appBarComponent.executeMethodHIJO();
+    }else
+    {
+      console.log("No se pudo inicializar appBarComponent Padre");
+    }
+  }
+
 }

@@ -29,37 +29,37 @@
       [style.height]="component?.height">
       <ng-container [ngSwitch]="component?.nombreComponente" style="background-color: white;">
         <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.INFORMATION_CARD_SIMPLE" [style.width]="component?.width" [style.height]="component?.height">
-          <app-information-card-only-text [style.width]="component?.width" [style.height]="component?.height" [metadataComponente]="component"></app-information-card-only-text>
+          <app-information-card-only-text [metadataComponente]="component"></app-information-card-only-text>
         </div>
         <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.INFORMATION_CARD_WITH_CHART" [style.width]="component?.width" [style.height]="component?.height">
-          <app-information-card-with-chart [metadataComponente]="component" [style.width]="component?.width" [style.height]="component?.height"></app-information-card-with-chart>
+          <app-information-card-with-chart [metadataComponente]="component" ></app-information-card-with-chart>
         </div>
         <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.INFORMATION_CARD_WITH_CHART_DONUT" [style.width]="component?.width" [style.height]="component?.height">
-          <app-information-card-with-donut-chart [metadataComponente]="component" [style.width]="component?.width" [style.height]="component?.height"></app-information-card-with-donut-chart>
+          <app-information-card-with-donut-chart [metadataComponente]="component" ></app-information-card-with-donut-chart>
         </div>
         <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.BAR_CHART" [style.width]="component?.width" [style.height]="component?.height">
           <app-spartan-bi-card [componente]="component" [style.width]="component?.width" [style.height]="component?.height">
-            <app-bar [metadataComponente]="component" [style.width]="component?.width" [style.height]="component?.height" style="background-color: red;"></app-bar>
+            <app-bar [metadataComponente]="component"></app-bar>
           </app-spartan-bi-card>
         </div>
         <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.LINE_CHART"  [style.width]="component?.width" [style.height]="component?.height">
           <app-spartan-bi-card [componente]="component" [style.width]="component?.width" [style.height]="component?.height">
-            <app-line [metadataComponente]="component" [style.width]="component?.width" [style.height]="component?.height"></app-line>
+            <app-line [metadataComponente]="component"></app-line>
           </app-spartan-bi-card>
         </div>
         <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.PIE_CHART" [style.width]="component?.width" [style.height]="component?.height">
           <app-spartan-bi-card [componente]="component" [style.width]="component?.width" [style.height]="component?.height">
-            <app-pie [metadataComponente]="component" [style.width]="component?.width" [style.height]="component?.height"></app-pie>
+            <app-pie [metadataComponente]="component"></app-pie>
           </app-spartan-bi-card>
         </div>
         <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.DONUT_CHART" [style.width]="component?.width" [style.height]="component?.height">
           <app-spartan-bi-card [componente]="component" [style.width]="component?.width" [style.height]="component?.height">
-            <app-donut [metadataComponente]="component" [style.width]="component?.width" [style.height]="component?.height"></app-donut>
+            <app-donut [metadataComponente]="component" ></app-donut>
           </app-spartan-bi-card>
         </div>
         <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.MAP_WITH_BUBLES" [style.width]="component?.width" [style.height]="component?.height">
           <app-spartan-bi-card [componente]="component" [style.width]="component?.width" [style.height]="component?.height">
-            <app-map-with-bubbles [style.width]="component?.width" [style.height]="component?.height"></app-map-with-bubbles>
+            <app-map-with-bubbles></app-map-with-bubbles>
           </app-spartan-bi-card>
         </div>
         <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.MAP_WITH_MARKERS" [style.width]="component?.width" [style.height]="component?.height">

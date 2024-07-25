@@ -41,8 +41,8 @@ export class DashboardService {
     // this.viewId = idDashboard ==  environment.idDashboardDefault ? this.viewId : idDashboard
     // this.viewId = 1
     const params = {
-      dashboardId: idDashboard,
-      viewId: viewId
+      dashboardId: this.idDashboard,  
+      viewId: this.viewId,
     }    
     return this._http.get<SeccionesDataModel>(`${this.BASE_URL}/Spartan_Dashboard/Spartan_DashboardConfiguration`, {
       params: new HttpParams({ fromObject: params })

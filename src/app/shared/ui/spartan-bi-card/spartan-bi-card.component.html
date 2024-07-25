@@ -10,15 +10,22 @@
       <button matTooltip="Imprimir"  color="accent" (click)="onExport()"  [hidden]="true">
         <span class="material-symbols-outlined">print </span>
       </button>
-      <button matTooltip="Exportar" [matMenuTriggerFor]="menu" [hidden]="true">
-        <span class="material-symbols-outlined"> ios_share  </span>
+      <button matTooltip="Exportar Imagen" [matMenuTriggerFor]="menu" [hidden]="true">
+        <img src="../../../../assets/imgs/ico-imgcapture.svg" alt="Exportar Imagen">
       </button>
+      <button style="background-color: white;" matTooltip="Exportar Imagen" (click)="onExportImage()" [hidden]="false">
+        <img src="../../../../assets/imgs/ico-imgcapture.svg" alt="Exportar Imagen">
+      </button>
+      <button style="background-color: white;" matTooltip="Exportar Datos" (click)="onExportDatos()" [hidden]="false">
+        <img src="../../../../assets/imgs/ico-exportexcel.svg" alt="Exportar Datos">
+      </button>      
       <button matTooltip="Vista completa" (click)="onFullView()">
         <span class="material-symbols-outlined">{{isFullView ? 'hide' : 'pan_zoom' }}</span>
       </button>
     </div>
   </div>
-  <ng-content></ng-content>
+  <ng-content>            
+  </ng-content>
   <mat-menu #menu="matMenu">
     <button mat-menu-item>
       <span class="menu-item-text">Exportar a imagen</span>
