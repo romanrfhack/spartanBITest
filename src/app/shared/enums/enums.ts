@@ -7,6 +7,7 @@ export enum ENUM_TIPO_DE_COMPONETES{
     CHECK_SHADOW = "checkShadow",
     FILTER_CHECK_WITH_SEARCH ="filter-checks-with-search",
     BAR_CHART="bar-chart",
+    BAR_VERTICAL_CHART="bar-vertical-chart",
     PIE_CHART="pie-chart",
     DONUT_CHART="donut-chart",
     LINE_CHART="line-chart",

@@ -2,8 +2,7 @@
   <ng-container *ngIf="this.lineData; else Loader"
   [style.height]="metadataComponente?.height ? metadataComponente?.height : '220px'"
 [style.width]="metadataComponente?.width ? metadataComponente?.width : '220px'"
-style="background-color: white;">
-  <button kendoButton (click)="exportChart()">Exportar como imagen</button>
+style="background-color: white;">  
     <kendo-chart class="chart-container-kendo-bi"  #chartLineExport >
       <kendo-chart-category-axis>
         <kendo-chart-category-axis-item

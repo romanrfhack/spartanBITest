@@ -39,7 +39,14 @@
         </div>
         <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.BAR_CHART" [style.width]="component?.width" [style.height]="component?.height">
           <app-spartan-bi-card [componente]="component" [style.width]="component?.width" [style.height]="component?.height">
-            <app-bar [metadataComponente]="component"></app-bar>
+            <!-- <app-bar [metadataComponente]="component"></app-bar> -->
+             <app-bar-vertical [metadataComponente]="component"></app-bar-vertical>
+          </app-spartan-bi-card>
+        </div>
+        <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.BAR_VERTICAL_CHART" [style.width]="component?.width" [style.height]="component?.height">
+          <app-spartan-bi-card [componente]="component" [style.width]="component?.width" [style.height]="component?.height">
+            <!-- <app-bar [metadataComponente]="component"></app-bar> -->
+             <app-bar-vertical [metadataComponente]="component"></app-bar-vertical>
           </app-spartan-bi-card>
         </div>
         <div *ngSwitchCase="ENUM_TIPO_DE_COMPONETES.LINE_CHART"  [style.width]="component?.width" [style.height]="component?.height">

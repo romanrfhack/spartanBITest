@@ -6,7 +6,6 @@ import { ComponenteModel } from 'src/app/models/seccion.data';
 import { CONSTANTS } from 'src/app/shared/constants/constants';
 import { ENUM_TIPO_DE_COMPONETES } from 'src/app/shared/enums/enums';
 import { saveAs } from "@progress/kendo-file-saver";
-import { ExportService } from 'src/app/shared/services/ExportService ';
 import { Subscription } from 'rxjs';
 const { transform, Circle: GeomCircle } = geometry;
 
@@ -36,12 +35,9 @@ export class BarComponent implements OnInit, OnDestroy{
 
   public readonly ESTILO_GRAFICAS = CONSTANTS.ESTILO_GRAFICAS
   public componente: ComponenteModel;
-  constructor(private exportService: ExportService) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.exportSubscription = this.exportService.exportImageObservable$.subscribe(() => {
-      this.onExportImage();
-    });
+  ngOnInit() {    
   }
 
   private _setDataCompoente(metadata: ComponenteModel) {

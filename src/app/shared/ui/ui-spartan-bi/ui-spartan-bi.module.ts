@@ -30,6 +30,17 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { InformationCardWithDonutChartKendoComponent } from '../information-card-with-donut-chart-kendo/information-card-with-donut-chart-kendo.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { BarVerticalComponent } from '../charts/bar-vertical/bar-vertical.component';
+
+
+// import { NgModule } from "@angular/core";0
+// import { FormsModule } from "@angular/forms";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+// import { ChartsModule } from "@progress/kendo-angular-charts";
+import { HttpClientModule } from "@angular/common/http";
+
+
 @NgModule({
   declarations: [
     FiltersWithChecksComponent,
@@ -48,10 +59,10 @@ import { MatButtonModule } from '@angular/material/button';
     ExportChartComponent,
     LineComponent,
     BarComponent,
+    BarVerticalComponent,
     PieComponent,
     InformationCardWithDonutChartComponent,
     InformationCardWithDonutChartKendoComponent,
-
   ],
   imports: [
     CommonModule,
@@ -66,7 +77,12 @@ import { MatButtonModule } from '@angular/material/button';
     NgApexchartsModule,
     MatIconModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    // BrowserModule,
+    // BrowserAnimationsModule,      
+    // HttpClientModule,
+    // ButtonsModule,
+    // InputsModule,
   ],
   exports: [
     FiltersWithChecksComponent,
@@ -85,10 +101,10 @@ import { MatButtonModule } from '@angular/material/button';
     ExportChartComponent,
     LineComponent,
     BarComponent,
+    BarVerticalComponent,
     PieComponent,
     InformationCardWithDonutChartComponent,
     InformationCardWithDonutChartKendoComponent,
-
   ]
 })
 export class UiSpartanBiModule { }

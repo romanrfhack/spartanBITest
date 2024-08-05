@@ -17,7 +17,7 @@ import { ConfigService } from './services/config.service';
 @NgModule({
   declarations: [
     AppComponent,
-    BlockComponent,
+    BlockComponent,    
   ],
   imports: [
     BrowserModule,

@@ -31,10 +31,7 @@ export class BIComponent {
       componente1: "filter-checks-with-search",
       div1Width: 20, 
       div1Height: 100,                
-    }]
-    // componente4: "chart-bar",
-    // div4Width: 40, 
-    // div4Height: 100,   
+    }]    
 
     items = [
     {
