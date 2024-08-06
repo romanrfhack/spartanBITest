@@ -27,7 +27,7 @@
     </ng-template>
   </div> -->
   <div class="chart-container-general-bi" [hidden]="isToExport">
-  <ng-container *ngIf="this.componente; else Loader"
+  <ng-container *ngIf="data; else Loader"
   [style.height]="componente?.height ? componente?.height : '220px'"
 [style.width]="componente?.width ? componente?.width : '220px'"
 style="background-color: white;">

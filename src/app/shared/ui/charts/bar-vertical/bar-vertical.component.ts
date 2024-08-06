@@ -18,7 +18,7 @@ import { CONSTANTS } from "src/app/shared/constants/constants";
   templateUrl: './bar-vertical.component.html',
   styleUrls: ['./bar-vertical.component.scss']
 })
-export class BarVerticalComponent implements OnInit, OnDestroy{
+export class BarVerticalComponent implements OnInit, OnDestroy {
   data = [];
   @Output() exportImage = new EventEmitter<void>();
   @Output() exportDatos = new EventEmitter<void>();
@@ -34,7 +34,7 @@ export class BarVerticalComponent implements OnInit, OnDestroy{
     this._setDataCompoente(metadata)
   }
 
-  constructor() { 
+  constructor() {
     // for (let idx = 0; idx < 500; idx++) {
     //   this.data.push({
     //     value: Math.floor(Math.random() * 100) + 1,
@@ -45,21 +45,33 @@ export class BarVerticalComponent implements OnInit, OnDestroy{
 
   private _setDataCompoente(metadata: ComponenteModel) {
     this.componente = metadata
-    if (!this.isToExport) {
-      //this.componente.values.data.sort((a, b) => a - b)
-      this.data.push({
-            value: this.componente.values.data,
-            category: this.componente.values.categories,
-          });
-      // this.componente.values.data = this.componente.values.data.map((item, index) => {
-      //   return { value: Number(item), valueColor: this.ESTILO_GRAFICAS.primaryColor, category: this.componente.values.categories[index] }
-      // })
-      // this.componente.values.data[0].valueColor = this.ESTILO_GRAFICAS.minValueColor
-      // this.componente.values.data[this.componente.values.data.length - 1].valueColor = this.ESTILO_GRAFICAS.maxValueColor
-    }
-
     console.log("this.componente: ",this.componente)
     console.log("this.data: ",this.data)
+    const values = this.componente.values?.data;
+    const categories = this.componente.values?.categories;
+    console.log("values: ",values)
+    console.log("categories: ",categories)
+
+    for (let idx = 0; idx < values.length; idx++) {
+      this.data.push({
+        value: values[idx],
+        category: categories[idx],
+      });
+    }
+    console.log("this.data 1: ",this.data)
+    // if (!this.isToExport) {
+    //   this.componente.values.data.sort((a, b) => a - b)
+    // this.data.push({
+    //       value: this.componente.values[0].data,
+    //       category: this.componente.values[0].categories,
+    //     });
+    //   this.componente.values.data = this.componente.values.data.map((item, index) => {
+    //     return { value: Number(item), valueColor: this.ESTILO_GRAFICAS.primaryColor, category: this.componente.values.categories[index] }
+    //   })
+    //   this.componente.values.data[0].valueColor = this.ESTILO_GRAFICAS.minValueColor
+    //   this.componente.values.data[this.componente.values.data.length - 1].valueColor = this.ESTILO_GRAFICAS.maxValueColor
+    // }
+
   }
 
   public categoryAxis = {
@@ -75,7 +87,7 @@ export class BarVerticalComponent implements OnInit, OnDestroy{
     },
   };
 
-  ngOnInit() {    
+  ngOnInit() {
   }
 
   public onDragStart(args: DragStartEvent): void {
@@ -143,6 +155,6 @@ export class BarVerticalComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy() {
-    
+
   }
 }
