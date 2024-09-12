@@ -11,13 +11,14 @@ import { BlockUIModule } from 'ng-block-ui';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpInterceptorService } from './interceptors/http-interceptor.service';
 import { ConfigService } from './services/config.service';
-
+import { SpartaneAssistantComponent } from './shared/components/spartane-assistant/spartane-assistant.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BlockComponent,    
+    BlockComponent,        
+    SpartaneAssistantComponent
   ],
   imports: [
     BrowserModule,

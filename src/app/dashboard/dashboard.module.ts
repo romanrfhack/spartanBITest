@@ -14,6 +14,7 @@ import { BlockComponent } from '../shared/ui/components/block/block.component';
 import { authGuard } from '../auth.guard';
 import { SelectDashboardComponent } from './select-dashboard/select-dashboard.component';
 
+
 const routes: Route[] = [
   {
     path: '',
@@ -33,8 +34,7 @@ const routes: Route[] = [
   declarations: [
     DashboardComponent,
     BIComponent,
-    SelectDashboardComponent,
-    
+    SelectDashboardComponent,    
   ],
 
   imports: [
